@@ -1,5 +1,5 @@
-// Fazenda Mourão v46: guarda o app para abrir sem internet
-const CACHE='mourao-v46',ARQ=['./','index.html','manifest.webmanifest','icone-192.png','icone-512.png'];
+// Fazenda Mourão v47: guarda o app para abrir sem internet
+const CACHE='mourao-v47',ARQ=['./','index.html','manifest.webmanifest','icone-192.png','icone-512.png'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ARQ)));self.skipWaiting()});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(n=>n!==CACHE).map(n=>caches.delete(n)))).then(()=>self.clients.claim()))});
 // página: tenta a rede (pega versão nova), sem sinal usa a guardada; demais arquivos: guardado primeiro
