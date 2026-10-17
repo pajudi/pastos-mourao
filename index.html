@@ -154,6 +154,7 @@ header.top .who{display:block;opacity:.9;font-size:12px;margin-top:2px;backgroun
   <button type="button" id="btSair" aria-label="Sair (trocar de usuário)"><svg viewBox="0 0 24 24"><path d="M10 4H5v16h5"/><path d="M14 8l4 4-4 4M18 12H9"/></svg>Sair</button>
  </div></header>
 <main id="app" hidden>
+  <div id="avisoGlobal" class="note bad" style="margin-bottom:12px" hidden></div>
   <section id="tab-painel"></section>
   <section id="tab-leitura" hidden></section>
   <section id="tab-mudanca" hidden></section>
@@ -186,7 +187,7 @@ header.top .who{display:block;opacity:.9;font-size:12px;margin-top:2px;backgroun
 <script>
 const DATA = {"base":"2026-10-12","pastos":[{"id":"1.1","area":26,"viz":["1.2","1.3","P.10","P.9"],"semMapa":false,"naoRecebe":false},{"id":"1.2","area":13,"viz":["1.1","1.4","1.5"],"semMapa":false,"naoRecebe":false},{"id":"1.3","area":26,"viz":["1.1","1.4","9.1"],"semMapa":false,"naoRecebe":false},{"id":"1.4","area":26,"viz":["1.2","1.3","1.5"],"semMapa":false,"naoRecebe":false},{"id":"1.5","area":13,"viz":["1.2","1.4"],"semMapa":false,"naoRecebe":false},{"id":"2.1","area":26,"viz":["2.2A","2.3A","2.3B"],"semMapa":false,"naoRecebe":false},{"id":"2.2A","area":26,"viz":["2.1","2.4"],"semMapa":false,"naoRecebe":false},{"id":"2.3A","area":13,"viz":["2.1","2.3B","2.4","M.2"],"semMapa":false,"naoRecebe":false},{"id":"2.3B","area":13,"viz":["2.1","2.3A","2.4","M.2"],"semMapa":false,"naoRecebe":false},{"id":"2.4","area":26,"viz":["2.2A","2.3A","2.3B","M.1"],"semMapa":false,"naoRecebe":false},{"id":"3.1","area":26,"viz":["3.2","4.4B","C.2","M.3"],"semMapa":false,"naoRecebe":false},{"id":"3.2","area":26,"viz":["3.1","M.4"],"semMapa":false,"naoRecebe":false},{"id":"4.1A","area":26,"viz":["4.1B","4.2A"],"semMapa":false,"naoRecebe":false},{"id":"4.1B","area":26,"viz":["4.1A","4.2B","4.3A"],"semMapa":false,"naoRecebe":false},{"id":"4.2A","area":26,"viz":["4.1A","4.2B","A.2"],"semMapa":false,"naoRecebe":false},{"id":"4.2B","area":26,"viz":["4.1B","4.2A","4.4A","A.1"],"semMapa":false,"naoRecebe":false},{"id":"4.3A","area":26,"viz":["4.1B","4.3B","4.4A"],"semMapa":false,"naoRecebe":false},{"id":"4.3B","area":26,"viz":["4.3A","4.4B","M.2","M.3"],"semMapa":false,"naoRecebe":false},{"id":"4.4A","area":26,"viz":["4.2B","4.3A","4.4B","B.2"],"semMapa":false,"naoRecebe":false},{"id":"4.4B","area":26,"viz":["3.1","4.3B","4.4A","B.1"],"semMapa":false,"naoRecebe":false},{"id":"6.1","area":26,"viz":["6.2A","6.2B","6.3"],"semMapa":false,"naoRecebe":false},{"id":"6.2A","area":14.52,"viz":["6.1","6.2B","6.4","8.1"],"semMapa":false,"naoRecebe":false},{"id":"6.2B","area":14.52,"viz":["6.1","6.2A","6.4","8.1"],"semMapa":false,"naoRecebe":false},{"id":"6.3","area":26,"viz":["6.1","6.4","7.1"],"semMapa":false,"naoRecebe":false},{"id":"6.4","area":26,"viz":["6.2A","6.2B","6.3","7.3","8.2"],"semMapa":false,"naoRecebe":false},{"id":"7.1","area":26,"viz":["6.3","7.2","7.3"],"semMapa":false,"naoRecebe":false},{"id":"7.2","area":26,"viz":["7.1","7.4"],"semMapa":false,"naoRecebe":false},{"id":"7.3","area":26,"viz":["6.4","7.1","7.4","7.5"],"semMapa":false,"naoRecebe":false},{"id":"7.4","area":26,"viz":["7.2","7.3","7.6"],"semMapa":false,"naoRecebe":false},{"id":"7.5","area":26,"viz":["7.3","7.6","7.7","8.2"],"semMapa":false,"naoRecebe":false},{"id":"7.6","area":26,"viz":["7.4","7.5","7.8"],"semMapa":false,"naoRecebe":false},{"id":"7.7","area":26,"viz":["7.5","7.8","8.4","J.3"],"semMapa":false,"naoRecebe":false},{"id":"7.8","area":26,"viz":["7.6","7.7","J.4"],"semMapa":false,"naoRecebe":false},{"id":"8.1","area":26,"viz":["6.2A","6.2B","8.2","8.3"],"semMapa":false,"naoRecebe":false},{"id":"8.2","area":26,"viz":["6.4","7.5","8.1","8.4"],"semMapa":false,"naoRecebe":false},{"id":"8.3","area":26,"viz":["8.1","8.4","J.1"],"semMapa":false,"naoRecebe":false},{"id":"8.4","area":26,"viz":["7.7","8.2","8.3","J.2"],"semMapa":false,"naoRecebe":false},{"id":"9.1","area":26,"viz":["1.3","9.2"],"semMapa":false,"naoRecebe":false},{"id":"9.2","area":26,"viz":["9.1","9.3"],"semMapa":false,"naoRecebe":false},{"id":"9.3","area":10,"viz":["9.2","9.4"],"semMapa":false,"naoRecebe":false},{"id":"9.4","area":10,"viz":["9.3"],"semMapa":false,"naoRecebe":false},{"id":"A.1","area":26,"viz":["4.2B","A.2","A.4","B.2"],"semMapa":false,"naoRecebe":false},{"id":"A.2","area":26,"viz":["4.2A","A.1","A.3"],"semMapa":false,"naoRecebe":false},{"id":"A.3","area":26,"viz":["A.2","A.4"],"semMapa":false,"naoRecebe":false},{"id":"A.4","area":26,"viz":["A.1","A.3","B.3"],"semMapa":false,"naoRecebe":false},{"id":"B.1","area":26,"viz":["4.4B","B.2","B.4","C.2"],"semMapa":false,"naoRecebe":false},{"id":"B.2","area":26,"viz":["4.4A","A.1","B.1","B.3"],"semMapa":false,"naoRecebe":false},{"id":"B.3","area":26,"viz":["A.4","B.2","B.4"],"semMapa":false,"naoRecebe":false},{"id":"B.4","area":26,"viz":["B.1","B.3","C.3"],"semMapa":false,"naoRecebe":false},{"id":"C.1","area":26,"viz":["C.2","C.4"],"semMapa":false,"naoRecebe":false},{"id":"C.2","area":26,"viz":["3.1","B.1","C.1","C.3"],"semMapa":false,"naoRecebe":false},{"id":"C.3","area":26,"viz":["B.4","C.2","C.4"],"semMapa":false,"naoRecebe":false},{"id":"C.4","area":26,"viz":["C.1","C.3"],"semMapa":false,"naoRecebe":false},{"id":"CURRAL","area":0.5,"viz":[],"semMapa":true,"naoRecebe":true},{"id":"Corred. 6.2","area":2.4,"viz":[],"semMapa":true,"naoRecebe":true},{"id":"Corred. Madeira","area":2.4,"viz":[],"semMapa":true,"naoRecebe":true},{"id":"Corred. Moreira","area":2.4,"viz":[],"semMapa":true,"naoRecebe":true},{"id":"D.1","area":26,"viz":["D.2","D.4","E.2"],"semMapa":false,"naoRecebe":false},{"id":"D.2","area":26,"viz":["D.1","D.3"],"semMapa":false,"naoRecebe":false},{"id":"D.3","area":26,"viz":["D.2","D.4"],"semMapa":false,"naoRecebe":false},{"id":"D.4","area":26,"viz":["D.1","D.3","E.3"],"semMapa":false,"naoRecebe":false},{"id":"E.1","area":26,"viz":["E.2","E.4","J.5"],"semMapa":false,"naoRecebe":false},{"id":"E.2","area":26,"viz":["D.1","E.1","E.3"],"semMapa":false,"naoRecebe":false},{"id":"E.3","area":26,"viz":["D.4","E.2","E.4"],"semMapa":false,"naoRecebe":false},{"id":"E.4","area":26,"viz":["E.1","E.3","J.6"],"semMapa":false,"naoRecebe":false},{"id":"J.1","area":26,"viz":["8.3","J.12","J.2"],"semMapa":false,"naoRecebe":false},{"id":"J.10A","area":13,"viz":["J.10B","J.11A","J.3","J.9"],"semMapa":false,"naoRecebe":false},{"id":"J.10B","area":13,"viz":["J.10A","J.11A","J.3","J.9"],"semMapa":false,"naoRecebe":false},{"id":"J.11A","area":26,"viz":["J.10A","J.10B","J.12","J.2"],"semMapa":false,"naoRecebe":false},{"id":"J.12","area":26,"viz":["J.1","J.11A"],"semMapa":false,"naoRecebe":false},{"id":"J.2","area":26,"viz":["8.4","J.1","J.11A","J.3"],"semMapa":false,"naoRecebe":false},{"id":"J.3","area":26,"viz":["7.7","J.10A","J.10B","J.2","J.4"],"semMapa":false,"naoRecebe":false},{"id":"J.4","area":26,"viz":["7.8","J.3","J.5","J.9"],"semMapa":false,"naoRecebe":false},{"id":"J.5","area":26,"viz":["E.1","J.4","J.6","J.8A","J.8B"],"semMapa":false,"naoRecebe":false},{"id":"J.6","area":26,"viz":["E.4","J.5","J.7A","J.7B"],"semMapa":false,"naoRecebe":false},{"id":"J.7A","area":13,"viz":["J.6","J.7B","J.8A","J.8B"],"semMapa":false,"naoRecebe":false},{"id":"J.7B","area":13,"viz":["J.6","J.7A","J.8A","J.8B"],"semMapa":false,"naoRecebe":false},{"id":"J.8A","area":13,"viz":["J.5","J.7A","J.7B","J.8B","J.9"],"semMapa":false,"naoRecebe":false},{"id":"J.8B","area":13,"viz":["J.5","J.7A","J.7B","J.8A","J.9"],"semMapa":false,"naoRecebe":false},{"id":"J.9","area":26,"viz":["J.10A","J.10B","J.4","J.8A","J.8B"],"semMapa":false,"naoRecebe":false},{"id":"M.1","area":13,"viz":["2.4","M.2","M.4"],"semMapa":false,"naoRecebe":false},{"id":"M.2","area":13,"viz":["2.3A","2.3B","4.3B","M.1","M.3"],"semMapa":false,"naoRecebe":false},{"id":"M.3","area":13,"viz":["3.1","4.3B","M.2","M.4"],"semMapa":false,"naoRecebe":false},{"id":"M.4","area":13,"viz":["3.2","M.1","M.3"],"semMapa":false,"naoRecebe":false},{"id":"P.1 B","area":13,"viz":["P.1 M","P.2"],"semMapa":false,"naoRecebe":false},{"id":"P.1 M","area":13,"viz":["P.1 B","P.2","P.8B"],"semMapa":false,"naoRecebe":false},{"id":"P.10","area":13,"viz":["1.1","P.9"],"semMapa":false,"naoRecebe":false},{"id":"P.11","area":10,"viz":["P.12"],"semMapa":false,"naoRecebe":false},{"id":"P.12","area":10,"viz":["P.11"],"semMapa":false,"naoRecebe":false},{"id":"P.2","area":26,"viz":["P.1 B","P.1 M","P.3A","P.3M"],"semMapa":false,"naoRecebe":false},{"id":"P.3A","area":5,"viz":["P.2","P.3M","P.4"],"semMapa":false,"naoRecebe":false},{"id":"P.3M","area":13,"viz":["P.2","P.3A","P.4"],"semMapa":false,"naoRecebe":false},{"id":"P.4","area":26,"viz":["P.3A","P.3M","P.5"],"semMapa":false,"naoRecebe":false},{"id":"P.5","area":26,"viz":["P.4","P.6"],"semMapa":false,"naoRecebe":false},{"id":"P.6","area":26,"viz":["P.5"],"semMapa":false,"naoRecebe":false},{"id":"P.7","area":26,"viz":["P.8A"],"semMapa":false,"naoRecebe":false},{"id":"P.8A","area":13,"viz":["P.7","P.8B"],"semMapa":false,"naoRecebe":false},{"id":"P.8B","area":8,"viz":["P.1 M","P.8A"],"semMapa":false,"naoRecebe":false},{"id":"P.9","area":13,"viz":["1.1","P.10"],"semMapa":false,"naoRecebe":false},{"id":"Piq. ALOJAMENTO","area":4,"viz":[],"semMapa":true,"naoRecebe":false},{"id":"Piq. CANTINA","area":4,"viz":[],"semMapa":true,"naoRecebe":false},{"id":"Piq. Curral","area":0.5,"viz":[],"semMapa":true,"naoRecebe":true},{"id":"Piq. Galpão","area":1,"viz":[],"semMapa":true,"naoRecebe":true},{"id":"T.1.1","area":2,"viz":[],"semMapa":true,"naoRecebe":false},{"id":"T.1.2","area":2,"viz":[],"semMapa":true,"naoRecebe":false},{"id":"T.2","area":4,"viz":[],"semMapa":true,"naoRecebe":false},{"id":"T.3","area":4,"viz":[],"semMapa":true,"naoRecebe":false},{"id":"T.4","area":4,"viz":[],"semMapa":true,"naoRecebe":false},{"id":"T.5","area":4,"viz":[],"semMapa":true,"naoRecebe":false},{"id":"T.6","area":4,"viz":[],"semMapa":true,"naoRecebe":false}],"lotes":[{"id":"1.1","pasto":"1.1","animais":[["Bezerros",24,25,1],["Vacas",24,534.2,0.288]]},{"id":"1.2","pasto":"1.2","animais":[["Bezerros",6,31.2,1],["Vacas",75,530.3,0.295]]},{"id":"1.3","pasto":"1.3","animais":[["Bezerros",50,26.0,1],["Vacas",50,544.7,0.323]]},{"id":"1.4","pasto":"1.4","animais":[["Bezerros",35,27.6,1],["Vacas",35,537.5,0.288]]},{"id":"2.1","pasto":"2.1","animais":[["Bezerros",9,184.6,1],["Novilhas",6,522.5,0.49],["Vacas",10,569.7,0.337]]},{"id":"2.2B","pasto":"2.2A","animais":[["Tropa",1,635.5,0.25],["Tropa",1,635.3,0.25]]},{"id":"2.3B","pasto":"2.3B","animais":[["Vacas",60,570.8,0.28]]},{"id":"2.4","pasto":"2.4","animais":[["Desmamas",47,277,0.59]]},{"id":"3.2","pasto":"3.2","animais":[["Desmamas",57,235,0.63]]},{"id":"4.1B","pasto":"4.1B","animais":[["Garrotes",28,392.4,0.53]]},{"id":"4.2B","pasto":"4.2B","animais":[["Garrotes",42,376,0.56]]},{"id":"4.3A","pasto":"4.3A","animais":[["Garrotes",43,409.6,0.56]]},{"id":"4.3B","pasto":"4.3B","animais":[["Bois",12,391,0.5],["Garrotes",26,420.1,0.53]]},{"id":"4.4A","pasto":"4.4A","animais":[["Garrotes",33,424,0.57]]},{"id":"4.4B","pasto":"4.4B","animais":[["Novilhas",70,338.1,0.44]]},{"id":"6.1","pasto":"6.1","animais":[["Tropa",2,454.5,0.77],["Tropa",1,472.2,0.11]]},{"id":"6.2A","pasto":"6.2A","animais":[["Novilhas",2,438.6,0.605],["Vacas",26,514.3,0.268]]},{"id":"6.3","pasto":"6.3","animais":[["Desmamas",45,297.0,0.74]]},{"id":"7.1","pasto":"7.1","animais":[["Bois",20,560.3,0.545],["Garrotes",3,533,0.67]]},{"id":"7.2","pasto":"7.2","animais":[["Desmamas",47,270,0.67]]},{"id":"7.3","pasto":"7.3","animais":[["Desmamas",53,297.0,0.74]]},{"id":"7.4","pasto":"7.4","animais":[["Vacas",35,429,0.22]]},{"id":"7.5 P1","pasto":"7.5","animais":[["Desmamas",101,305.1,0.76]]},{"id":"7.6","pasto":"7.6","animais":[["Novilhas",48,520.7,0.49]]},{"id":"7.7 P2","pasto":"7.7","animais":[["Desmamas",100,287.7,0.72]]},{"id":"7.8","pasto":"7.8","animais":[["Novilhas",45,328,0.44]]},{"id":"8.1","pasto":"8.1","animais":[["CEIP",16,688.3,0.62]]},{"id":"8.2 P4","pasto":"8.2","animais":[["Desmamas",5,344.4,1],["Desmamas",74,241.9,0.65]]},{"id":"8.3","pasto":"8.3","animais":[["Vacas",36,522,0.22]]},{"id":"8.4 P1","pasto":"8.4","animais":[["Desmamas",35,271.6,0.73]]},{"id":"9.1","pasto":"9.1","animais":[["Bezerros",50,37.3,1],["Vacas",50,577.1,0.29]]},{"id":"9.2","pasto":"9.2","animais":[["Bezerros",49,44.0,0.91],["Vacas",50,574,0.38]]},{"id":"9.3","pasto":"9.3","animais":[["Bois",1,492.1,0.45],["CEIP",10,649.3,0.62]]},{"id":"9.4","pasto":"9.4","animais":[["Bezerros",51,43.5,0.73],["Vacas",51,571.7,0.42]]},{"id":"A.1","pasto":"A.1","animais":[["Garrotes",55,374,0.54]]},{"id":"A.3","pasto":"A.3","animais":[["Garrotes",42,335.9,0.49]]},{"id":"A.4","pasto":"A.4","animais":[["Garrotes",55,374,0.54]]},{"id":"B.1","pasto":"B.1","animais":[["Vacas",37,534.1,0.3]]},{"id":"B.2","pasto":"B.2","animais":[["Novilhas",54,348.3,0.45]]},{"id":"B.3","pasto":"B.3","animais":[["Garrotes",34,342.3,0.51]]},{"id":"C.1","pasto":"C.1","animais":[["Vacas",33,534.1,0.3]]},{"id":"C.2","pasto":"C.2","animais":[["Vacas",34,534.1,0.3]]},{"id":"C.3","pasto":"C.3","animais":[["Vacas",46,488.7,0.25]]},{"id":"C.4","pasto":"C.4","animais":[["Novilhas",15,540.3,0.49],["Vacas",18,518.6,0.307]]},{"id":"Corred. 6.2","pasto":"Corred. 6.2","animais":[["Bezerros",6,31.6,0.605],["Vacas",6,546.9,0.3]]},{"id":"D.1","pasto":"D.1","animais":[["Novilhas",42,422.8,0.54]]},{"id":"D.2","pasto":"D.2","animais":[["Novilhas",41,434.7,0.55]]},{"id":"D.3","pasto":"D.3","animais":[["Desmamas",75,261.6,0.675]]},{"id":"D.4","pasto":"D.4","animais":[["Novilhas",32,277,0.46]]},{"id":"E.1","pasto":"E.1","animais":[["Desmamas",49,199.2,0.59],["Novilhas",1,333,0.47]]},{"id":"E.2","pasto":"E.2","animais":[["Desmamas",33,210,0.54]]},{"id":"E.3","pasto":"E.3","animais":[["Desmamas",35,259,0.66]]},{"id":"E.4","pasto":"E.4","animais":[["Desmamas",30,199.2,0.59],["Desmamas",20,199.2,0.59]]},{"id":"J.1","pasto":"J.1","animais":[["Vacas",24,522,0.22]]},{"id":"J.10B","pasto":"J.10B","animais":[["Novilhas",35,316.6,0.41]]},{"id":"J.11A","pasto":"J.11A","animais":[["Novilhas",30,316.6,0.41]]},{"id":"J.2","pasto":"J.2","animais":[["Garrotes",35,334.1,0.49]]},{"id":"J.3","pasto":"J.3","animais":[["Novilhas",34,309.2,0.41]]},{"id":"J.7A","pasto":"J.7A","animais":[["Novilhas",57,351.4,0.45]]},{"id":"J.8A","pasto":"J.8A","animais":[["Novilhas",46,330.2,0.44]]},{"id":"J.9","pasto":"J.9","animais":[["Novilhas",46,328,0.44]]},{"id":"M.1","pasto":"M.1","animais":[["Garrotes",90,420.1,0.53]]},{"id":"M.4","pasto":"M.4","animais":[["Bois",3,476,0.55],["Garrotes",68,476,0.55]]},{"id":"P.1 B","pasto":"P.1 B","animais":[["Bezerros",50,37.9,0.2],["Vacas",50,556.5,0.37]]},{"id":"P.11","pasto":"P.11","animais":[["Tropa",3,624.2,0.15],["Tropa",4,468.1,0.11]]},{"id":"P.12","pasto":"P.12","animais":[["Bezerros",16,27.8,0.867],["Vacas",8,564.5,0.263]]},{"id":"P.2","pasto":"P.2","animais":[["Bezerros",48,34.6,0.21],["Vacas",48,549.1,0.36]]},{"id":"P.5","pasto":"P.5","animais":[["Vacas",61,521.5,0.31]]},{"id":"P.6","pasto":"P.6","animais":[["Tropa",16,469.4,0.11],["Tropa",1,344.6,0.49]]},{"id":"P.7","pasto":"P.7","animais":[["Tropa",1,343.5,0.49],["Tropa",18,352.6,0.31]]},{"id":"P.8B","pasto":"P.8B","animais":[["Tropa",3,338,0.47],["Tropa",13,375.2,0.34]]},{"id":"P.9","pasto":"P.9","animais":[["Vacas",4,548.4,0.25]]},{"id":"Piq. Curral","pasto":"Piq. Curral","animais":[["Garrotes",1,354.0,0.49],["Vacas",1,521.2,0.31]]},{"id":"Piq. Galpão","pasto":"Piq. Galpão","animais":[["Tropa",1,1061.2,0.59]]},{"id":"T.3","pasto":"T.3","animais":[["Desmamas",2,524,1],["Desmamas",1,170.2,0.29],["Desmamas",1,631.1,0.74],["Vacas",2,618.8,0.3]]},{"id":"T.4","pasto":"T.4","animais":[["CEIP",4,821.0,0.54]]},{"id":"T.5","pasto":"T.5","animais":[["Bois",3,634.6,0.56],["CEIP",1,945.3,0.64],["Garrotes",2,418.1,0.57]]},{"id":"T.6","pasto":"T.6","animais":[["Tropa",6,636.8,0.25],["Tropa",46,635.8,0.25]]}]};
 const KEY='pastosMourao.v1';
-const VERSAO=50;
+const VERSAO=51;
 document.getElementById("hdrTit").textContent=`Fazenda Mourão - v${VERSAO}`;
 const C=1/12;                 // queda do capim (nível/dia) por UA/ha, sem crescimento: 3 UA/ha - 1,4 leva de 5 a 1 em 30 dias
 const G_PADRAO=1.4/12;        // crescimento padrão do capim (nível/dia), equivale a 1,4 UA/ha
@@ -194,6 +195,10 @@ const JANELA=60, DESCANSO=25, REC=4/25, LEVE=1, PESADO=3, MAXLEVE=60;
 const VACAS=['Vacas','Vacas cheias','Vacas vazias','Vacas descarte'];
 const MALE=['Bois','Garrotes','CEIP'], FEM=[...VACAS,'Novilhas'];
 let PASTOS=[],P={};
+// fechamento: o gado de cada pasto numa data vira o novo ponto de partida e os lançamentos anteriores saem do celular
+const BASE0={base:DATA.base};
+const fechAtual=()=>(S.config&&S.config.fechamento)||null;
+function aplicarBase(){const f=fechAtual();DATA.base=f?f.data:BASE0.base;DATA.grupos=f?f.grupos:null;_perCache=null}
 const LOTE0=Object.fromEntries(DATA.lotes.map(l=>[l.id,l]));
 
 // ---------- armazenamento ----------
@@ -211,10 +216,21 @@ function montarPastos(){
   PASTOS=Object.values(base).sort((a,b)=>a.nome.localeCompare(b.nome,'pt-BR',{numeric:true}));
   P=base;
 }
-montarPastos();
+aplicarBase();montarPastos();
 const nm=id=>P[id]?P[id].nome:id;
-let storageOk=true;
-function save(){try{localStorage.setItem(KEY,JSON.stringify(S));storageOk=true}catch(e){storageOk=false}}
+// dados principais no IndexedDB (cabe muito mais); o localStorage fica como segunda cópia enquanto couber
+let storageOk=true,_lsOk=true,_idbOk=null,_boot=false,_idb=null;
+function idbAbre(){if(!_idb)_idb=new Promise((ok,er)=>{try{const r=indexedDB.open('pastosMourao.dados',1);r.onupgradeneeded=()=>r.result.createObjectStore('kv');r.onsuccess=()=>ok(r.result);r.onerror=()=>er(r.error)}catch(e){er(e)}});return _idb}
+async function idbGet(k){const db=await idbAbre();return new Promise((ok,er)=>{const q=db.transaction('kv').objectStore('kv').get(k);q.onsuccess=()=>ok(q.result);q.onerror=()=>er(q.error)})}
+async function idbSet(k,v){const db=await idbAbre();return new Promise((ok,er)=>{const tx=db.transaction('kv','readwrite');tx.objectStore('kv').put(v,k);tx.oncomplete=()=>ok();tx.onerror=tx.onabort=()=>er(tx.error)})}
+async function idbDel(k){const db=await idbAbre();return new Promise((ok,er)=>{const tx=db.transaction('kv','readwrite');tx.objectStore('kv').delete(k);tx.oncomplete=()=>ok();tx.onerror=()=>er(tx.error)})}
+function save(){if(!_boot)return;S.salvoTs=Date.now();let j;try{j=JSON.stringify(S)}catch(e){storageOk=false;return}
+  try{localStorage.setItem(KEY,j);_lsOk=true}catch(e){_lsOk=false;try{localStorage.removeItem(KEY)}catch(e2){}}
+  storageOk=_lsOk||_idbOk!==false;
+  idbSet('S',j).then(()=>{_idbOk=true},()=>{_idbOk=false}).then(()=>{const ok=_idbOk||_lsOk;if(ok!==storageOk){storageOk=ok;if(typeof atualizaTopo==='function')atualizaTopo()}})}
+// ao abrir: usa a cópia mais nova (IndexedDB ou localStorage) e passa os dados antigos para o IndexedDB
+async function carregarIDB(){try{const j=await idbGet('S');if(j){const s=JSON.parse(j);if(s&&s.leituras&&(s.salvoTs||0)>(S.salvoTs||0)){const v=vazio();for(const k in v)if(s[k]==null)s[k]=v[k];S=s;aplicarBase();montarPastos()}}}catch(e){}
+  _boot=true;save()}
 const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,7);
 
 // ---------- usuários, senha e registro ----------
@@ -267,7 +283,43 @@ const TIPOS_LANC=['leitura','mudanca','gado','ocorrencia','resolucao','pasto','u
 function estadoCopia(){const ult=S.copia?S.copia.ts:0;
   const pend=S.log.filter(l=>l.dev===DEV&&TIPOS_LANC.includes(l.tipo)&&l.ts>ult);
   const velho=pend.length?Math.min(...pend.map(l=>l.ts)):null,h=velho?(Date.now()-velho)/3600000:0;
-  return{n:pend.length,ult:S.copia?S.copia.ts:null,velho,horas:h,aviso:pend.length>0&&h>=24,trava:pend.length>0&&h>=48}}
+  return{n:pend.length,ult:S.copia?S.copia.ts:null,velho,horas:h,aviso:pend.length>0&&h>=24,vermelho:pend.length>0&&h>=72,trava:false}}
+// última sincronização de cada usuário ativo: o que a planilha informa e, sem isso, o registro "Cópia dos dados: planilha Google"
+function ultSincUsers(){const sv=S.ultSinc||{},out=[];
+  for(const u of S.usuarios.filter(u=>u.ativo!==false)){let ts=(sv[u.id]||{}).ts||0,versao=(sv[u.id]||{}).versao||null;
+    for(const l of S.log)if(l.user===u.id&&l.tipo==='copia'&&/planilha/.test(l.texto)&&l.ts>ts)ts=l.ts;
+    out.push({id:u.id,nome:u.nome,ts,versao,dias:ts?Math.floor((Date.now()-ts)/DAY):Infinity})}
+  return out.sort((a,b)=>b.dias-a.dias||a.nome.localeCompare(b.nome,'pt-BR'))}
+// ---------- fechamento (automático a cada 30 dias guardando 365; ou pelo botão de manutenção) ----------
+const LISTAS_FECH=['leituras','mudancas','eventos','ocorrencias','log'];
+const dataDe=x=>x.data||diaLocal(x.ts||x.criado||0);
+function saiNoFech(x,k,f){if(!f||!f.data)return false;if((f.manter||[]).includes(x.id))return false;if(k==='ocorrencias'&&x.status==='aberta')return false;return dataDe(x)<f.data}
+// tira do celular o que é anterior ao fechamento (forca = todos; senão só o que a planilha já tem)
+function podar(forca){const f=fechAtual();let n=0;if(!f)return 0;
+  for(const k of LISTAS_FECH){const a=S[k].length;S[k]=S[k].filter(x=>!(saiNoFech(x,k,f)&&(forca||x.sv)));n+=a-S[k].length}
+  S.fechAplic=f.id;_perCache=null;return n}
+// o gado de cada pasto no começo do dia C, as leituras que ainda valem e a suplementação em andamento
+function montarFech(C){const PER=periodos(),d1=addD(C,-1),grupos=[],manter=new Set();
+  for(const p of PASTOS)for(const x of ocupantes(p.id,d1,PER)){const cats={};for(const [c,k] of Object.entries(x.cats))if(k.q>0)cats[c]={q:k.q,w:pesoEm(k,x.ini,C),g:k.g,pes:k.pes};
+    if(Object.keys(cats).length)grupos.push({pasto:p.id,gid:x.gid,nome:x.nome,entrada:x.entrada,chegada:x.chegada,cats})}
+  for(const p of PASTOS){const L=leiturasDe(p.id).filter(l=>l.data<C);if(L.length)manter.add(L[L.length-1].id);
+    for(const l of L)if(marcas(l).includes('adubado')){const d=l.aduboData||l.data;if(addD(d,(+l.aduboDias||0)+(+l.aduboEf||60))>C)manter.add(l.id)}
+    for(const x of supInfo(p.id,PER))if(x.fim>=C){manter.add(x.p.id);for(const e of S.eventos)if(e.prog===x.p.id)manter.add(e.id)}}
+  for(const e of S.eventos)if(e.tipo==='estorno'&&manter.has(e.ref))manter.add(e.id);
+  return{data:C,grupos,manter:[...manter]}}
+function contaFech(C){const f=montarFech(C);let n=0;for(const k of LISTAS_FECH)for(const x of S[k])if(saiNoFech(x,k,f))n++;return n}
+async function fecharAte(C,auto){const ant=fechAtual(),f={id:uid(),...montarFech(C),ts:Date.now(),por:SES?SES.nome:'',auto:!!auto,ant:ant?{id:ant.id,data:ant.data,grupos:ant.grupos,manter:ant.manter}:null};
+  // cópia antes de fechar: guardada neste celular (para desfazer) e, no botão, também baixada como arquivo
+  await idbSet('fechBackup',JSON.stringify({id:f.id,S}));if(!auto)await copiaAuto('fechamento');
+  S.config={...S.config,fechamento:f,alterado:Date.now()};aplicarBase();const n=podar(true);
+  registrar('config',C,`Fechamento ${auto?'automático ':''}até ${br(C)}: ${n} lançamento(s) anteriores saíram do celular (estão na cópia e na planilha)`);save();atualizaTopo();return n}
+async function desfazerFech(){const f=fechAtual();if(!f)return'Não há fechamento para desfazer.';let bk=null;try{bk=JSON.parse(await idbGet('fechBackup')||'null')}catch(e){}
+  if(!bk||bk.id!==f.id)return'A cópia deste fechamento não está neste celular. Use o arquivo baixado no dia do fechamento (Mais › Dados › Juntar dados).';
+  let n=0;for(const k of LISTAS_FECH){const ids=new Set(S[k].map(x=>x.id));for(const x of (bk.S[k]||[]))if(!ids.has(x.id)){delete x.sv;S[k].push(x);n++}}
+  S.config={...S.config,fechamento:f.ant||null,alterado:Date.now()};aplicarBase();S.fechAplic=f.ant?f.ant.id:null;
+  registrar('config',null,`Fechamento de ${br(f.data)} desfeito: ${n} lançamento(s) voltaram`);save();try{await idbDel('fechBackup')}catch(e){}atualizaTopo();montarPastos();return null}
+// automático: no celular do administrador, quando a base fica com mais de 395 dias, fecha guardando os últimos 365
+function fechAuto(){if(!isAdmin()||!_boot)return;const lim=addD(hoje(),-365);if(DATA.base<addD(lim,-30))fecharAte(lim,true).then(n=>toast(`Fechamento automático até ${br(lim)} (${n} lançamentos antigos guardados na cópia)`)).catch(()=>{})}
 function marcarCopia(como){S.copia={ts:Date.now(),como};registrar('copia',null,'Cópia dos dados: '+como);save();atualizaTopo()}
 // relógio: o celular não pode estar antes do último lançamento deste usuário
 function ultimoTsUser(id){const u=usuario(id),lib=(u&&u.liberadoAte)||0;let m=0;for(const l of S.log)if(l.user===id&&l.tipo!=='copia'&&l.ts>lib&&l.ts>m)m=l.ts;return m}
@@ -277,12 +329,12 @@ const fmtDT=t=>{const d=new Date(t);return d.toLocaleDateString('pt-BR')+' '+d.t
 function bloqueio(){
   if(!SES)return'Entre com seu usuário.';
   const t=travaRelogio(SES.id);if(t)return`A data do celular (${fmtDT(Date.now())}) está antes do seu último lançamento (${fmtDT(t)}). Corrija a data e a hora do aparelho. Se a data certa é a de agora, peça ao administrador para liberar.`;
-  if(!isAdmin()&&estadoCopia().trava)return'Há lançamentos sem cópia há mais de 2 dias. Envie os dados pelo botão Sinc. no topo para liberar.';
   return null}
 // data do fato: nada no futuro; mais de 7 dias atrás exige senha do administrador
 function checarData(dt,senhaAdm){
   if(!dt)return'Informe a data.';
   if(dt>hoje())return'Data futura não é permitida. Confira a data do lançamento.';
+  {const f=fechAtual();if(f&&dt<f.data)return`Data antes do fechamento (${br(f.data)}). Lançamentos anteriores a essa data não são aceitos.`}
   if(dias(dt,hoje())>7&&!isAdmin()){if(!senhaAdm)return'ADM';if(!senhaAdminOk(senhaAdm))return'Senha do administrador incorreta.'}
   return null}
 const admBox=id=>`<div id="${id}" hidden><label for="${id}S">Data com mais de 7 dias: senha do administrador</label><input id="${id}S" type="password" autocomplete="off"></div>`;
@@ -323,9 +375,9 @@ function movsOrd(){return [...S.mudancas].sort((a,b)=>a.data<b.data?-1:a.data>b.
 // mudança no formato antigo (um lote inteiro de um pasto para outro) vira "levar todos"
 const naoMed=m=>{if(!m.itens)return '';const f=[m.saida===null?'saída':null,...m.itens.filter(it=>it.entrada===null).map(it=>'entrada '+nm(it.para))].filter(Boolean);return f.length?`<div class="muted" style="font-size:12px">Não medido: ${esc(f.join(', '))}</div>`:''};
 function itensMud(m){return m.itens||[{para:m.para,todos:true,entrada:m.entrada}]}
-let _perCache=null,_perKey='';
+var _perCache=null,_perKey='';
 function periodos(){
-  const key=S.mudancas.length+'|'+(S.mudancas.length?S.mudancas[S.mudancas.length-1].id:'')+'|'+S.eventos.length+'|'+(S.eventos.length?S.eventos[S.eventos.length-1].id:'');
+  const key=DATA.base+'|'+S.mudancas.length+'|'+(S.mudancas.length?S.mudancas[S.mudancas.length-1].id:'')+'|'+S.eventos.length+'|'+(S.eventos.length?S.eventos[S.eventos.length-1].id:'');
   if(_perCache&&_perKey===key)return _perCache;
   const st={},out=[],open={};
   const fechar=(pasto,d)=>{const x=open[pasto];if(x){x.fim=d;delete open[pasto]}};
@@ -333,7 +385,8 @@ function periodos(){
     g.cats=cats;g.t=d;if(!Object.keys(cats).length){delete st[pasto];return}
     const x={gid:g.gid,nome:g.nome,pasto,ini:d,fim:null,entrada:g.entrada,chegada:g.chegada,cats:JSON.parse(JSON.stringify(cats))};out.push(x);open[pasto]=x};
   // situação inicial: lotes da planilha, juntando os que estão no mesmo pasto
-  for(const l of DATA.lotes){const g=st[l.pasto]=st[l.pasto]||{gid:'g0_'+l.pasto,nome:null,t:DATA.base,entrada:DATA.base,chegada:DATA.base,cats:{}};
+  if(DATA.grupos){for(const g of DATA.grupos)st[g.pasto]={gid:g.gid,nome:g.nome,t:DATA.base,entrada:g.entrada,chegada:g.chegada,cats:JSON.parse(JSON.stringify(g.cats))}}
+  else for(const l of DATA.lotes){const g=st[l.pasto]=st[l.pasto]||{gid:'g0_'+l.pasto,nome:null,t:DATA.base,entrada:DATA.base,chegada:DATA.base,cats:{}};
     for(const [c,q,w,gg] of l.animais){const k=g.cats[c];if(k){const n=k.q+q;k.w=(k.w*k.q+w*q)/n;k.g=(k.g*k.q+gg*q)/n;k.q=n}else g.cats[c]={q,w,g:gg,pes:DATA.base}}}
   for(const pasto of Object.keys(st))abrir(pasto,st[pasto],DATA.base);
   // nascimentos, mortes e mudanças de categoria mexem no gado de um pasto sem mudar de lugar
@@ -351,7 +404,8 @@ function periodos(){
     else if(e.tipo==='categoria'){const k=g.cats[e.de];if(!k)return;for(const it of e.itens){const n=Math.min(k.q,it.q);if(n>0){k.q-=n;somar(it.para,n,k.w,k.g,k.pes)}}}
     fechar(e.pasto,d);abrir(e.pasto,g,d)};
   const X=new Set(S.eventos.filter(e=>e.tipo==='estorno').map(e=>e.ref)),FC=emConflito();
-  const fila=[...S.mudancas.filter(m=>!FC.has(m.id)).map(m=>({m})),...S.eventos.filter(e=>TIPOS_GADO.includes(e.tipo)&&!X.has(e.id)&&!FC.has(e.id)).map(e=>({e}))].sort((a,b)=>{const x=a.m||a.e,y=b.m||b.e;return x.data<y.data?-1:x.data>y.data?1:(x.criado||0)-(y.criado||0)});
+  const nb0=x=>!DATA.grupos||x.data>=DATA.base;
+  const fila=[...S.mudancas.filter(m=>!FC.has(m.id)&&nb0(m)).map(m=>({m})),...S.eventos.filter(e=>TIPOS_GADO.includes(e.tipo)&&!X.has(e.id)&&!FC.has(e.id)&&nb0(e)).map(e=>({e}))].sort((a,b)=>{const x=a.m||a.e,y=b.m||b.e;return x.data<y.data?-1:x.data>y.data?1:(x.criado||0)-(y.criado||0)});
   for(const it0 of fila){if(it0.e){aplicar(it0.e);continue}const m=it0.m;const d=m.data,src=st[m.de];if(!src)continue;
     // pesos de origem na data da mudança
     for(const k of Object.values(src.cats)){k.w=pesoEm(k,src.t,d)}src.t=d;
@@ -377,13 +431,25 @@ function uaHa(pasto,dt,PER){return ocupantes(pasto,dt,PER).reduce((s,x)=>s+uaSeg
 function estadas(PER,pasto){const L=PER.filter(x=>!pasto||x.pasto===pasto).sort((a,b)=>a.pasto<b.pasto?-1:a.pasto>b.pasto?1:a.ini<b.ini?-1:1),out=[];
   for(const x of L){const u=out[out.length-1];if(u&&u.pasto===x.pasto&&u.gid===x.gid&&u.fim===x.ini){u.fim=x.fim;u.ult=x}else out.push({pasto:x.pasto,gid:x.gid,nome:x.nome,ini:x.entrada<x.ini?x.entrada:x.ini,fim:x.fim,prim:x,ult:x})}
   return out}
-const nivel=l=>(l.altura+l.rebrota)/2;
+const nivel=l=>l.altura;
+// limites de altura e rebrota (Administrador › Configurações › Regras do capim)
+const CAPIM_PAD={prontoAlt:4,prontoReb:4,sairAlt:1,taloAlt:4,taloReb:2,rebAlt:2,rebReb:3};
+const CP=()=>({...CAPIM_PAD,...(S.config.capim||{})});
+// prazos de leitura (dias): com gado e vazio; "pouco confiável" = estimativa velha
+const LEIT_PAD={com:3,comPouco:4,vaz:20,vazPouco:15};
+const LP=()=>({...LEIT_PAD,...(S.config.leitPrazo||{})});
 
 // ---------- época (águas/seca), adubação e suplementação ----------
 // seca: o pasto mantém ~1 UA/ha e leva ~60 dias para recuperar (águas: 1,4 UA/ha e 25 dias)
 // quatro épocas, cada uma com o capim que o pasto mantém (UA/ha) e o descanso para recuperar (dias); o admin ajusta em Configurações
-const EPOCAS=[['aguas','Águas',1.4,25],['transSeca','Transição para seca',1.2,40],['seca','Seca',1.0,60],['transAguas','Transição para águas',1.2,40]];
-function EP(k){const b=EPOCAS.find(x=>x[0]===k)||EPOCAS[0],c=(S.config.epocaPar||{})[b[0]]||{},ua=+c.ua||b[2],desc=+c.desc||b[3];return{k:b[0],nome:b[1],ua,desc,g:ua/12,rec:4/desc}}
+const EPOCAS=[['aguas','Águas',1.4,25,3],['transSeca','Transição para seca',1.2,40,2],['seca','Seca',1.0,60,1],['transAguas','Transição para águas',1.2,40,2]];
+function EP(k){const b=EPOCAS.find(x=>x[0]===k)||EPOCAS[0],c=(S.config.epocaPar||{})[b[0]]||{},ua=+c.ua||b[2],desc=+c.desc||b[3],ideal=+c.ideal||b[4];return{k:b[0],nome:b[1],ua,desc,ideal,g:ua/12,rec:4/desc}}
+// calendário (mês a mês) das épocas: o app só pergunta ao administrador; a troca vale quando ele confirma
+const CAL_PAD=['aguas','aguas','aguas','transSeca','transSeca','seca','seca','seca','seca','transAguas','aguas','aguas'];
+const MESES=['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+const calEpoca=()=>{const c=S.config.calEpocas;return Array.isArray(c)&&c.length===12?c:CAL_PAD};
+const epocaCal=d=>calEpoca()[+d.slice(5,7)-1];
+function trocaPendente(){const h=hoje(),cal=epocaCal(h);if(cal===epocaEm(h))return null;const a=S.config.epocaAdiada;if(a&&a.ep===cal&&a.ate>h)return null;return cal}
 const epocas=()=>(S.config.epocas||[]).slice().sort((a,b)=>a.data<b.data?-1:a.data>b.data?1:(a.criado||0)-(b.criado||0));
 function epocaEm(d,EPS){let e='aguas';for(const x of EPS||epocas())if(x.data<=d)e=x.epoca;return e}
 // adubações lançadas nas leituras: capacidade (UA/ha por 30 dias) que cai até o normal ao longo do efeito, contado da liberação
@@ -410,7 +476,7 @@ function intervalos(pasto,PER){
     const u=soma/dt,uE=somaE/dt,bo=bon/dt, la=nivel(a), lb=nivel(b), taxa=(lb-la)/dt, ep=epocaEm(a.data,EPS);
     const valido=!(la>=5&&lb>=5)&&!(la<=0&&lb<=0);
     // crescimento próprio do pasto, sem o efeito do adubo e com o capim poupado pelo suplemento
-    out.push({de:a.data,ate:b.data,dt,ua:u,la,lb,taxa,ep,g:u>0?taxa+C*uE-bo:(taxa-bo)*EP(ep).g/EP(ep).rec,valido});
+    out.push({de:a.data,ate:b.data,dt,ua:u,la,lb,ra:a.rebrota,rb:b.rebrota,taxa,ep,g:u>0?taxa+C*uE-bo:(taxa-bo)*EP(ep).g/EP(ep).rec,valido});
   }
   return out;
 }
@@ -429,31 +495,32 @@ function estado(pasto,PER,ref){
   const RT={},rit=ep=>RT[ep]=RT[ep]||ritmo(pasto,PER,ref,ep),EPS=epocas(),AD=adubacoes(pasto),SP=supPer(pasto,PER);
   let lv,t0,suposto=false;const ul=L[L.length-1]||null;
   if(ul){lv=nivel(ul);t0=ul.data}else{lv=5;t0=DATA.base;suposto=true}
+  const cp=CP();let rb=ul?ul.rebrota:5,taloL=!!(ul&&ul.altura>=cp.taloAlt&&ul.rebrota<=cp.taloReb);
   const lv0=lv;
   // ponto do capim: dias desde que o pasto vazio chegou a 5; passado pela leitura vale até entrar gado
   // conta a partir de quando a ALTURA chega a 5 com o pasto vazio
   const alt0=ul?ul.altura:5,altDe=x=>Math.min(5,Math.max(0,alt0+x-lv0));
   let cheio=(altDe(lv)>=4.95&&!ocupantes(pasto,t0,PER).length)?t0:null, passadoLeit=!!(ul&&marcas(ul).includes('passado'));
   for(let k=0;k<dias(t0,ref);k++){const d=addD(t0,k),ep=epocaEm(d,EPS),rr=rit(ep),b=bonusAd(AD,d,ep);const uh=uaHa(pasto,d,PER);
-    lv=Math.min(5,Math.max(0,lv+(uh>0?rr.g+b-C*uh*(1-poupa(supEm(SP,d))):EP(ep).rec*rr.g/EP(ep).g+b)));
-    if(uh>0){cheio=null;passadoLeit=false}else if(altDe(lv)>=4.95&&!cheio)cheio=addD(d,1)}
+    const dl=uh>0?rr.g+b-C*uh*(1-poupa(supEm(SP,d))):EP(ep).rec*rr.g/EP(ep).g+b;lv=Math.min(5,Math.max(0,lv+dl));rb=Math.min(5,Math.max(0,rb+dl));
+    if(uh>0){cheio=null;passadoLeit=false;taloL=false}else if(altDe(lv)>=4.95&&!cheio)cheio=addD(d,1)}
   const occ=ocupantes(pasto,ref,PER), u=uaHa(pasto,ref,PER);
   const ep=epocaEm(ref,EPS),r0=rit(ep),bH=bonusAd(AD,ref,ep),sup=occ.length?supEm(SP,ref):null,pH=poupa(sup);
   // r.g = crescimento de hoje (ritmo do pasto + adubo); gBase = só o ritmo
   const r={...r0,g:r0.g+bH,gBase:r0.g,bonus:bH};
   // altura e rebrota estimadas: a mesma variação do capim aplicada às notas da última leitura
-  const cl=x=>Math.min(5,Math.max(0,x));
-  const alt=ul?cl(ul.altura+lv-lv0):lv, reb=ul?cl(ul.rebrota+lv-lv0):lv;
+  const alt=lv, reb=rb;
   const dp=diasPassado(pasto);
   const mk=ul?marcas(ul):[],adubo=aduboDe(pasto,ref);
   const noPonto=cheio?dias(cheio,ref):null;
-  const talo=alt>=3&&reb<3;
+  const ep6=1e-6,talo=(alt>=cp.taloAlt-ep6&&reb<=cp.taloReb+ep6)||taloL;
+  const pronto=alt>=cp.prontoAlt-ep6&&reb>=cp.prontoReb-ep6, rebrotando=alt<=cp.rebAlt+ep6&&reb>=cp.rebReb-ep6;
   const passado=!occ.length&&(passadoLeit||(noPonto!==null&&noPonto>dp)||talo);
   const passaEm=!occ.length&&!passado&&noPonto!==null?Math.max(0,dp-noPonto):null;
   let diasAte1=null,diasAte5=null;
-  if(occ.length){const q=C*u*(1-pH)-r.g;diasAte1=q>0?Math.max(0,(lv-1)/q):Infinity}
-  else diasAte5=lv>=5?0:(5-lv)/(EP(ep).rec*r0.g/EP(ep).g+bH);
-  return{ep,sup,poup:pH,lv,alt,reb,occ,u,r,diasAte1,diasAte5,suposto,ultima:ul,passado,talo,passaEm,cheio,dp,fraco:mk.includes('fraco'),sujo:mk.includes('sujo'),adubo};
+  if(occ.length){const q=C*u*(1-pH)-r.g;diasAte1=q>0?Math.max(0,(alt-cp.sairAlt)/q):Infinity}
+  else{const fal=Math.max(0,cp.prontoAlt-alt,cp.prontoReb-reb);diasAte5=fal<=ep6?0:fal/(EP(ep).rec*r0.g/EP(ep).g+bH)}
+  return{ep,sup,poup:pH,lv,alt,reb,pronto,rebrotando,occ,u,r,diasAte1,diasAte5,suposto,ultima:ul,passado,talo,passaEm,cheio,dp,fraco:mk.includes('fraco'),sujo:mk.includes('sujo'),adubo};
 }
 // dias que o capim fica passado depois de a altura chegar a 5: configuração da fazenda (só o administrador altera)
 const DIAS_PONTO=10;
@@ -473,7 +540,7 @@ function alertas(PER){
   for(const p of PASTOS){
     const e=estado(p.id,PER,ref),ul=e.ultima;
     if(e.occ.length){
-      if(e.lv<=1.2)add(p.id,'bad','Capim no fim: mudar o lote');
+      if(e.alt<=CP().sairAlt+1e-6)add(p.id,'bad','Capim no fim: mudar o lote');
       else if(e.diasAte1!==Infinity&&e.diasAte1<=7)add(p.id,'warn',`Sair em ~${Math.ceil(e.diasAte1)} dias`);
       if(e.u<LEVE){const d=dias(e.occ[0].entrada,ref);if(d>=MAXLEVE)add(p.id,'warn',`Gado leve há ${d} dias: trocar e fazer corte`)}
       {const v=[];for(const x of e.occ)for(const k of catsHoje(x,ref))if(dias(k.pes,ref)>DIAS_PESAGEM)v.push(`${k.c.toLowerCase()} (${dias(k.pes,ref)} d)`);if(v.length)add(p.id,'warn',`Pesar: ${v.join(', ')}`)}
@@ -504,7 +571,7 @@ function corteAguardando(PER){
 // mov: categorias que vão ({c:{q,w,g}} com peso na data); resto: o que fica no pasto de saída; outros: destinos já escolhidos
 function sugerir(mov,de,resto,data,PER,outros){
   let U=0;for(const k of Object.values(mov))U+=k.q*k.w;U/=450;
-  const sx=sexoCats(mov),sxResto=sexoCats(resto),corte=corteAguardando(PER),out=[];
+  const sx=sexoCats(mov),sxResto=sexoCats(resto),corte=corteAguardando(PER),out=[],ideal=EP(epocaEm(data)).ideal;
   if(U<=0)return out;
   for(const p of PASTOS){
     if(p.naoRecebe||p.id===de||(outros||[]).includes(p.id))continue;
@@ -516,18 +583,18 @@ function sugerir(mov,de,resto,data,PER,outros){
     if(e.adubo&&e.adubo.libera>data)continue;
     if(e.passado&&!temVacasCats(mov))continue;
     const emCorte=p.id in corte;
-    if(e.lv<4.5&&!emCorte)continue;
+    if(!e.pronto&&!emCorte)continue;
     if(p.viz.some(v=>choca(sx,v===de?sxResto:ocupantes(v,data,PER).map(sexo).join(''))))continue;
     const uh=U/p.area;
     if(emCorte&&uh<=PESADO)continue;
-    const q=C*uh-e.r.g, dur=q>0?(e.lv-1)/q:Infinity;
-    const mesmoBloco=p.id.split(/[.\s]/)[0]===de.split(/[.\s]/)[0];
-    let score=emCorte?-1000:(dur===Infinity?p.area:1000-dur);
-    if(!mesmoBloco)score+=10;
-    if(e.passado)score+=500;
-    out.push({id:p.id,uh,dur,emCorte,score,passado:e.passado});
+    const q=C*uh-e.r.g, dur=q>0?(e.alt-CP().sairAlt)/q:Infinity;
+    const mesmoBloco=p.id.split(/[.\s]/)[0]===de.split(/[.\s]/)[0],viz=!!(P[de]&&P[de].viz.includes(p.id));
+    const prox=viz?0:mesmoBloco?1:2,dif=Math.abs(uh-ideal);
+    out.push({id:p.id,uh,dur,emCorte,passado:e.passado,prox,dif,ideal});
   }
-  return out.sort((a,b)=>a.score-b.score).slice(0,6);
+  // corte rápido primeiro; com vacas, o passado vem antes; depois a lotação mais perto da ideal (faixas de 0,5 UA/ha), a proximidade e a diferença exata
+  const vacas=temVacasCats(mov),k=x=>[x.emCorte?0:1,vacas&&x.passado?0:1,Math.round(x.dif/.5),x.prox,x.dif];
+  return out.sort((a,b)=>{const A=k(a),B=k(b);for(let i=0;i<A.length;i++)if(A[i]!==B[i])return A[i]-B[i];return 0}).slice(0,6);
 }
 
 // ---------- UI util ----------
@@ -553,10 +620,18 @@ let filtro='todos', busca='';
 // última estada que terminou (pasto ficou vazio) antes de uma data
 function ultimaEstada(pasto,antes,PER){let f=null;for(const x of estadas(PER,pasto))if(x.fim&&(!antes||x.fim<=antes)&&(!f||x.fim>f.fim))f=x;return f}
 function barra(rot,v,sup){return `<span class="br"><span>${rot}</span><span class="bar"><i style="width:${v/5*100}%;background:${corNivel(v)}"></i></span><b>${f1(v)}${sup?'*':''}</b></span>`}
+// leitura atrasada: com gado conta da última leitura; vazio, da última leitura ou da saída do gado (o mais recente)
+function atrasoLeitura(p,e,PER,ref){if(p.naoRecebe)return null;const lp=LP(),ul=e.ultima;let base=ul?ul.data:DATA.base,lim=lp.com;
+  if(!e.occ.length){const us=ultimaEstada(p.id,null,PER);if(us&&us.fim>base)base=us.fim;lim=lp.vaz}
+  const d=dias(base,ref),dl=ul?dias(ul.data,ref):dias(DATA.base,ref);
+  return{d,lim,atraso:d-lim,atrasada:d>lim,pouco:dl>=(e.occ.length?lp.comPouco:lp.vazPouco),com:!!e.occ.length}}
+function leiturasPendentes(PER,ref,lista){ref=ref||hoje();const out=[];for(const p of PASTOS){const e=lista?lista.find(x=>x.p===p).e:estado(p.id,PER,ref),a=atrasoLeitura(p,e,PER,ref);if(a&&a.atrasada)out.push({p,...a})}
+  return out.sort((x,y)=>y.atraso-x.atraso||(y.com-x.com))}
 function cardPasto(p,e,a,PER,corte,ref){
-  const occ=e.occ.length, chips=[...a];
+  const occ=e.occ.length, chips=[...a], al=atrasoLeitura(p,e,PER,ref);
+  if(al&&al.atrasada)chips.push({tipo:'warn',txt:`Leitura atrasada: ${al.d} dias${occ?' com gado':''}`});
   if(!occ&&!p.naoRecebe){
-    if(!e.passado&&e.lv>=4.5){chips.push({tipo:'ok',txt:'Bom para entrar'});if(e.passaEm!==null)chips.push({tipo:'warn',txt:`Passa do ponto em ${e.passaEm} dia(s)`})}
+    if(!e.passado&&e.pronto){chips.push({tipo:'ok',txt:'Bom para entrar'});if(e.passaEm!==null)chips.push({tipo:'warn',txt:`Passa do ponto em ${e.passaEm} dia(s)`})}
   }
   if(e.fraco)chips.push({tipo:'warn',txt:'Capim fraco'});
   if(e.sujo)chips.push({tipo:'warn',txt:'Pasto sujo'});
@@ -565,12 +640,12 @@ function cardPasto(p,e,a,PER,corte,ref){
   {const x=occ?supAtivo(p.id,PER):null;if(x){const t=supTxt(x);if(t.tipo==='info')chips.push(t);if(e.sup)chips.push({tipo:'info',txt:`Poupa ${Math.round(e.poup*100)}% do capim`})}}
   if(e.r.bonus>0)chips.push({tipo:'info',txt:`Adubado: hoje aguenta ${f1(e.r.g*12+1.6)} UA/ha por 30 dias`});
   const nOc=S.ocorrencias.filter(o=>o.pasto===p.id&&o.status==='aberta').length;if(nOc)chips.push({tipo:'warn',txt:`${nOc} ocorrência(s) aberta(s)`});
-  const cor=a.some(x=>x.tipo==='bad')?'var(--bad)':(a.length||(!occ&&e.passado))?'var(--warn)':occ?'var(--info)':corNivel(e.lv);
+  const cor=a.some(x=>x.tipo==='bad')?'var(--bad)':(a.length||(!occ&&e.passado))?'var(--warn)':occ?'var(--info)':corNivel(e.alt);
   const ul=e.ultima;
   const esq=`<div class="pcL"><div><span class="nm">${esc(p.nome)}</span> <span class="sub">(${String(p.area).replace('.',',')} ha, ${esc(p.capim||'')})</span>${p.semMapa?' <span class="sub">· sem vizinhos</span>':''}</div>
     ${barra('Altura',e.alt,e.suposto)}${barra('Rebrota',e.reb,e.suposto)}
     ${occ?`<div><b>${f2(e.u)}</b> UA/ha <span class="sub">(${f1(e.u*p.area)} UA)</span></div><div>${e.diasAte1===Infinity?'<b>Não precisa trocar</b>':`Trocar em <b>${fmtDias(e.diasAte1)}</b>`}</div>`:''}
-    <div class="sub">${e.r.proprio?`ritmo ${Math.round(e.r.gBase/EP(e.ep).g*100)}% · `:''}${ul?'leitura '+dm(ul.data):'sem leitura'}</div></div>`;
+    <div class="sub">${e.r.proprio?`ritmo ${Math.round(e.r.gBase/EP(e.ep).g*100)}% · `:''}${ul?'leitura '+dm(ul.data):'sem leitura'}${al&&al.pouco?' · <b style="color:var(--warn)">pouco confiável</b>':''}</div></div>`;
   let dir;
   if(occ){dir=e.occ.map(x=>{const C2=catsHoje(x,ref),ini=x.entrada,us=ultimaEstada(p.id,ini,PER);
       const q=C2.reduce((s,k)=>s+k.q,0),kg=C2.reduce((s,k)=>s+k.kg,0);
@@ -579,8 +654,8 @@ function cardPasto(p,e,a,PER,corte,ref){
       ${C2.map(k=>`<div class="ct">${k.q} ${esc(k.c.toLowerCase())} <span class="sub">(${fk(k.peso)} kg, GMD ${f2(k.gmd)}, pesagem ${dm(k.pes)})</span></div>`).join('')}`}).join('<hr>')}
   else if(p.naoRecebe)dir=`<div class="lt muted">Corredor / curral</div>`;
   else{const us=ultimaEstada(p.id,null,PER);
-    const tit=e.passado?['var(--warn)',e.talo?'Passado (muito talo): só vacas':'Passado: só vacas']:(p.id in corte)?['var(--info)','Aguardando corte rápido']:e.lv>=4.5?['var(--ok)','Vazio, pronto']:
-      [corNivel(e.lv),`${e.alt<3&&e.reb>=3?'Rebrotando':e.alt<3?'Rapado':'Descansando'}, pronto em ${fmtDias(e.diasAte5)}`];
+    const tit=e.passado?['var(--warn)',e.talo?'Passado (muito talo): só vacas':'Passado: só vacas']:(p.id in corte)?['var(--info)','Aguardando corte rápido']:e.pronto?['var(--ok)','Vazio, pronto']:
+      [corNivel(e.alt),`${e.rebrotando?'Rebrotando':e.alt<=CP().sairAlt+1e-6?'Rapado':'Descansando'}, pronto em ${fmtDias(e.diasAte5)}`];
     dir=`<div class="lt" style="color:${tit[0]}">${tit[1]}</div><div class="sub">Aguenta até ${fk(e.r.g*12*p.area)} UA (${f1(e.r.g*12)} UA/ha)</div>
       ${us?`<div class="sub" style="margin-top:4px">Último: ${esc(us.nome||descSeg(us.prim))}, entrada ${dm(us.ini)}${us.ini===DATA.base?'*':''}, saída ${dm(us.fim)}</div>`:''}`}
   return `<button class="pc" data-p="${esc(p.id)}"><span class="stripe" style="background:${cor}"></span>${esq}<div class="pcR">${dir}</div>
@@ -589,13 +664,13 @@ function renderPainel(){
   const PER=periodos(),A=alertas(PER),corte=corteAguardando(PER),ref=hoje();
   const lista=PASTOS.map(p=>({p,e:estado(p.id,PER,ref),a:A[p.id]||[]}));
   const cnt={mudar:lista.filter(x=>x.a.some(a=>a.tipo==='bad'||/Sair|leve/.test(a.txt))).length,
-    ocup:lista.filter(x=>x.e.occ.length).length,livres:lista.filter(x=>!x.e.occ.length&&!x.p.naoRecebe&&x.e.lv>=4.5).length,
-    desc:lista.filter(x=>!x.e.occ.length&&!x.p.naoRecebe&&x.e.lv<4.5).length};
+    ocup:lista.filter(x=>x.e.occ.length).length,livres:lista.filter(x=>!x.e.occ.length&&!x.p.naoRecebe&&x.e.pronto).length,
+    desc:lista.filter(x=>!x.e.occ.length&&!x.p.naoRecebe&&!x.e.pronto).length};
   let L=lista;
   if(filtro==='mudar')L=L.filter(x=>x.a.some(a=>a.tipo==='bad'||/Sair|leve/.test(a.txt)));
   if(filtro==='ocup')L=L.filter(x=>x.e.occ.length);
-  if(filtro==='livres')L=L.filter(x=>!x.e.occ.length&&!x.p.naoRecebe&&x.e.lv>=4.5);
-  if(filtro==='desc')L=L.filter(x=>!x.e.occ.length&&!x.p.naoRecebe&&x.e.lv<4.5);
+  if(filtro==='livres')L=L.filter(x=>!x.e.occ.length&&!x.p.naoRecebe&&x.e.pronto);
+  if(filtro==='desc')L=L.filter(x=>!x.e.occ.length&&!x.p.naoRecebe&&!x.e.pronto);
   if(busca)L=L.filter(x=>x.p.id.toLowerCase().includes(busca)||x.e.occ.some(o=>(o.nome||'').toLowerCase().includes(busca)||descSeg(o).includes(busca)));
   if(filtro==='mudar')L.sort((a,b)=>b.a.length-a.a.length);
   const semLeitura=S.leituras.length===0;
@@ -603,11 +678,16 @@ function renderPainel(){
    ${semLeitura?`<div class="note warn" style="margin-bottom:12px">Ainda não há leituras. Até a primeira leitura de cada pasto, o app supõe capim 5 no dia ${br(DATA.base)} e usa o ritmo padrão (1,4 UA/ha).</div>`:''}
    ${(()=>{const t=travaRelogio(SES.id),c=estadoCopia();let h='';
      if(t)h+=`<div class="note bad" style="margin-bottom:12px">⛔ A data do celular está antes do seu último lançamento (${fmtDT(t)}). Nada pode ser lançado até corrigir a data e a hora do aparelho.</div>`;
-     if(c.trava)h+=`<div class="note bad" style="margin-bottom:12px">⛔ ${c.n} lançamento(s) sem cópia há mais de 2 dias.${isAdmin()?'':' Lançamentos travados até enviar.'} <a href="#" data-sinc>Enviar agora</a></div>`;
+     if(c.vermelho)h+=`<div class="note bad" style="margin-bottom:12px">⛔ ${c.n} lançamento(s) sem cópia há mais de 3 dias. <a href="#" data-sinc>Enviar agora</a></div>`;
      else if(c.aviso)h+=`<div class="note warn" style="margin-bottom:12px">⚠ Última cópia: ${c.ult?fmtDT(c.ult):'nunca'}. ${c.n} lançamento(s) sem cópia. Envie hoje. <a href="#" data-sinc>Enviar agora</a></div>`;
+     {const tc=isAdmin()?trocaPendente():null;if(tc)h+=`<div class="note warn" style="margin-bottom:12px">📅 Pelo calendário, começou a <b>${EP(tc).nome}</b> (o app está em ${EP(epocaEm(hoje())).nome}). Confirmar a troca?<div class="row" style="margin-top:8px"><button type="button" class="btn" id="epOk">Confirmar troca</button><button type="button" class="btn sec" id="epAdia">Adiar 7 dias</button></div></div>`}
+     {const LP2=leiturasPendentes(PER,ref,lista);if(LP2.length){const cg=LP2.filter(x=>x.com),vz=LP2.filter(x=>!x.com),nms=L=>L.slice(0,8).map(x=>esc(x.p.nome)).join(', ')+(L.length>8?` e mais ${L.length-8}`:'');
+       h+=`<div class="note ${cg.length?'bad':'warn'}" style="margin-bottom:12px">📋 ${LP2.length} leitura(s) atrasada(s).${cg.length?` Com gado (${cg.length}): ${nms(cg)}.`:''}${vz.length?` Vazios (${vz.length}): ${nms(vz)}.`:''} <a href="#" data-goleit>Ver lista</a></div>`}}
+     if(isAdmin()){const U=ultSincUsers(),at=U.filter(x=>x.dias>=1);
+       h+=`<details class="card" style="margin-bottom:12px;border-left:4px solid var(--${at.some(x=>x.dias>=3)?'bad':at.length?'warn':'ok'})"><summary><b>Última sincronização de cada usuário</b>${at.length?` · ${at.length} atrasado(s)`:''}</summary><div class="tbl" style="margin-top:6px"><table><tr><th>Usuário</th><th>Última</th><th>Versão</th></tr>${U.map(x=>`<tr><td>${esc(x.nome)}</td><td style="color:var(--${x.dias>=3?'bad':x.dias>=1?'warn':'ok'})">${x.ts?fmtDT(x.ts)+` (${x.dias<1?'hoje':x.dias+' d'})`:'nunca'}</td><td>${x.versao||'—'}</td></tr>`).join('')}</table></div><p class="muted" style="font-size:12px;margin:4px 0 0">Pela planilha, até a última sincronização deste celular. Amarelo = 1 dia ou mais; vermelho = 3 dias ou mais.</p></details>`}
+     if(isAdmin()){const RC=(S.recusados||[]).filter(x=>x.ts>(S.recusadosVisto||0));if(RC.length)h+=`<div class="note warn" style="margin-bottom:12px">⚠ ${RC.length} lançamento(s) com data antes do fechamento (${fechAtual()?br(fechAtual().data):'—'}) foram recusados pela planilha: ${RC.slice(-8).map(x=>`${esc(ROT_EV[x.tipo]||({leituras:'leitura',mudancas:'mudança',ocorrencias:'ocorrência'})[x.lista]||x.tipo)} ${esc(nm(x.pasto))} de ${br(x.data)} (${esc(nomeUser(x.user))})`).join('; ')}. Se precisar, lance de novo com outra data ou desfaça o fechamento. <a href="#" id="recOk">Ciente</a></div>`}
      if(isAdmin()&&conflitosPend().length)h+=`<div class="note warn" style="margin-bottom:12px">⚠ ${conflitosPend().length} lançamento(s) em conflito na sincronização. <a href="#" data-sinc>Revisar</a></div>`;
      return h})()}
-   ${storageOk?'':'<div class="note bad" style="margin-bottom:12px">Este navegador não está guardando os dados. Exporte um arquivo na aba Dados antes de fechar.</div>'}
    <div class="summary">
     ${[['mudar','Atenção',cnt.mudar],['ocup','Com gado',cnt.ocup],['livres','Prontos',cnt.livres],['desc','Descansando',cnt.desc]].map(([k,t,n])=>`<button data-f="${k}" aria-pressed="${filtro===k}"><b>${n}</b><span>${t}</span></button>`).join('')}
    </div>
@@ -616,6 +696,11 @@ function renderPainel(){
    <div class="plist">${L.map(({p,e,a})=>cardPasto(p,e,a,PER,corte,ref)).join('')||'<p class="muted">Nenhum pasto neste filtro.</p>'}</div>
    <p class="muted" style="font-size:12.5px;margin-top:12px">Altura e rebrota (0 a 5): estimadas para hoje a partir da última leitura. * na altura e rebrota = ainda sem leitura; * na entrada = data da planilha de lotação (${br(DATA.base)}). Passado: capim no ponto há mais dias do que o informado na leitura, marcado como passado, ou com muito talo; serve só para vacas. Peso: estimado para hoje (última pesagem + GMD × dias). Ritmo: crescimento do capim deste pasto comparado ao padrão, pela média das leituras dos últimos 60 dias.</p>`;
   document.querySelectorAll('[data-sinc]').forEach(a=>a.onclick=e=>{e.preventDefault();dadosSincAgora=!!sincCfg().url;go('dados',true)});
+  {const ro=$('#recOk');if(ro)ro.onclick=e=>{e.preventDefault();S.recusadosVisto=Date.now();save();renderPainel()}}
+  document.querySelectorAll('[data-goleit]').forEach(a=>a.onclick=e=>{e.preventDefault();go('leitura')});
+  {const ok=$('#epOk'),ad=$('#epAdia'),tc=trocaPendente();
+   if(ok)ok.onclick=()=>{const d=hoje();S.config={...S.config,epocas:[...(S.config.epocas||[]),{data:d,epoca:tc,criado:Date.now()}],epocaAdiada:null,alterado:Date.now()};_perCache=null;registrar('config',d,`Época: ${EP(tc).nome} a partir de ${br(d)} (confirmada pelo calendário)`);save();atualizaTopo();toast(`${EP(tc).nome} a partir de hoje`);renderPainel()};
+   if(ad)ad.onclick=()=>{S.config={...S.config,epocaAdiada:{ep:tc,ate:addD(hoje(),7)},alterado:Date.now()};registrar('config',null,`Troca para ${EP(tc).nome} adiada 7 dias`);save();renderPainel()}}
   document.querySelectorAll('.summary button').forEach(b=>b.onclick=()=>{filtro=filtro===b.dataset.f?'todos':b.dataset.f;renderPainel()});
   const bs=$('#busca');bs.oninput=()=>{busca=bs.value.trim().toLowerCase();const pos=bs.selectionStart;renderPainel();const n=$('#busca');n.focus();n.setSelectionRange(pos,pos)};
   const lp=$('#limpa');if(lp)lp.onclick=e=>{e.preventDefault();filtro='todos';renderPainel()};
@@ -625,7 +710,11 @@ function renderPainel(){
 let leituraPasto=null;
 function renderLeitura(){
   const p=leituraPasto||PASTOS[0].id;
+  const PEND=leiturasPendentes(periodos(),hoje()),lp=LP();
   $('#tab-leitura').innerHTML=`<h2>Leitura do pasto</h2>
+  ${PEND.length?`<details class="card" style="margin-bottom:12px;border-left:4px solid var(--${PEND.some(x=>x.com)?'bad':'warn'})" ${PEND.some(x=>x.com)?'open':''}><summary><b>Leituras pendentes (${PEND.length})</b></summary>
+   <p class="muted" style="font-size:12.5px;margin:6px 0">Com gado: leitura a cada ${lp.com} dias. Vazio: até ${lp.vaz} dias depois da saída do gado. Toque para lançar.</p>
+   <div class="stack" style="gap:6px">${PEND.map(x=>`<button type="button" class="btn sec" data-pend="${esc(x.p.id)}" style="text-align:left">${esc(x.p.nome)} · ${x.com?'com gado':'vazio'} · ${x.d} dias sem leitura <b style="color:var(--${x.com?'bad':'warn'})">(${x.atraso} de atraso)</b></button>`).join('')}</div></details>`:''}
   <form id="fLeit" class="card stack">
    <div class="row"><div><label for="lData">Data</label><input id="lData" type="date" value="${hoje()}" required></div>
    <div><label for="lPasto">Pasto</label><select id="lPasto">${(()=>{const PER=periodos(),d=hoje();return PASTOS.map(x=>{const o=ocupantes(x.id,d,PER);let t='vazio';
@@ -676,6 +765,7 @@ function renderLeitura(){
   const info=()=>{const PER=periodos(),id=$('#lPasto').value,e=estado(id,PER,$('#lData').value||hoje());
     $('#lInfo').textContent=(e.occ.length?`Com ${e.occ.map(x=>(x.nome?x.nome+': ':'')+descSeg(x)).join(' + ')}. `:'Pasto vazio. ')+`Estimado hoje: altura ${f1(e.alt)}, rebrota ${f1(e.reb)}${e.passado?', passado':''}.`};
   $('#lPasto').onchange=info;$('#lData').onchange=info;info();
+  document.querySelectorAll('[data-pend]').forEach(b=>b.onclick=()=>{$('#lPasto').value=b.dataset.pend;info();$('#fLeit').scrollIntoView({behavior:'smooth'})});
   const ult=[...S.leituras].sort((a,b)=>(b.criado||0)-(a.criado||0)).slice(0,8);
   $('#lUlt').innerHTML=ult.length?`<div class="tbl card" style="padding:4px"><table><tr><th>Data</th><th>Pasto</th><th>Alt.</th><th>Reb.</th><th>Ponto</th><th>Água</th><th>Origem</th></tr>${ult.map(l=>`<tr><td>${br(l.data)}</td><td>${esc(nm(l.pasto))}</td><td>${l.altura}</td><td>${l.rebrota}</td><td>${txtMarcas(l)}</td><td>${l.agua||''}</td><td>${l.origem==='mudanca'?'mudança':'leitura'}</td></tr>`).join('')}</table></div>`:'<p class="muted">Nenhuma leitura ainda.</p>';
   $('#fLeit').onsubmit=e=>{e.preventDefault();
@@ -1247,7 +1337,7 @@ function renderMudanca(){
     for(const d of mudDest){const b=document.getElementById('d_'+d.k),mov=movDe(cats,d.qtd);
       b.querySelector('.dSum').textContent=cabCats(mov)?`Levando ${cabCats(mov)} cab., ${f1(uaCats(mov))} UA`:'Nenhum animal escolhido.';
       const sg=cabCats(mov)?sugerir(mov,de,r,dtv,PER,outros.filter(x=>x!==d.para)):[];
-      const sb=b.querySelector('.dSug');sb.innerHTML=!cabCats(mov)?'<span class="muted">Escolha quantos animais levar.</span>':sg.length?sg.map(s=>`<button type="button" data-p="${esc(s.id)}">${esc(nm(s.id))} · ${f2(s.uh)} UA/ha · ${s.passado?'passado, ':''}${s.emCorte?'corte rápido':(s.dur===Infinity?'pode ficar':'~'+Math.round(s.dur)+' dias')}</button>`).join(''):'<span class="muted">Nenhum pasto vazio e pronto que respeite as divisas. Escolha manualmente.</span>';
+      const sb=b.querySelector('.dSug');sb.innerHTML=!cabCats(mov)?'<span class="muted">Escolha quantos animais levar.</span>':sg.length?sg.map(s=>`<button type="button" data-p="${esc(s.id)}">${esc(nm(s.id))} · ${nb(s.uh,1)} UA/ha · ${s.emCorte?'corte rápido':(s.dur===Infinity?'pode ficar':'~'+Math.round(s.dur)+' dias')}${s.passado?' · passado':''}${['',' · vizinho',' · mesmo bloco'][s.prox===0?1:s.prox===1?2:0]}</button>`).join('')+`<div class="muted" style="font-size:12px;width:100%">Ordem: lotação mais perto de ${nb(sg[0].ideal,1)} UA/ha (ideal da época)${temVacasCats(mov)?', pasto passado primeiro (vacas)':''}, depois vizinho e mesmo bloco.</div>`:'<span class="muted">Nenhum pasto vazio e pronto que respeite as divisas. Escolha manualmente.</span>';
       sb.querySelectorAll('button').forEach(x=>x.onclick=()=>{b.querySelector('.dPara').value=x.dataset.p;atualizar()});
       const ex=d.para?ocupantes(d.para,dtv,PER):[];
       b.querySelector('.dInfo').innerHTML=d.para?(ex.length?`O ${esc(nm(d.para))} já tem ${esc((ex[0].nome?ex[0].nome+': ':'')+descSeg(ex[0]))}. O gado vai se juntar e o peso médio de cada categoria é recalculado.`:`O ${esc(nm(d.para))} está vazio.`)+infoVazio(d.para,dtv)+infoDivisas(d,mov,ex,r,dtv):'';
@@ -1263,7 +1353,7 @@ function renderMudanca(){
       const ul=ultimaLeitura(d.para);if(ul&&ul.situacao==='reforma')avisos.push(`A última leitura marca o ${nm(d.para)} como em reforma.`);
       if(ul&&ul.agua==='seca')avisos.push(`A última leitura marca o ${nm(d.para)} sem água.`);
       {const ad=aduboDe(d.para,dtv);if(ad&&ad.libera>dtv)avisos.push(`O ${nm(d.para)} foi adubado em ${br(ad.data)}: gado só a partir de ${br(ad.libera)}.`)}
-      const e2=estado(d.para,PER,dtv);if(!ocupantes(d.para,dtv,PER).length&&e2.lv<4.5&&!(d.para in corteAguardando(PER)))avisos.push(`O capim do ${nm(d.para)} está estimado em altura ${f1(e2.alt)} e rebrota ${f1(e2.reb)}; o ideal é entrar com 5.`);
+      const e2=estado(d.para,PER,dtv);if(!ocupantes(d.para,dtv,PER).length&&!e2.pronto&&!(d.para in corteAguardando(PER)))avisos.push(`O capim do ${nm(d.para)} está estimado em altura ${f1(e2.alt)} e rebrota ${f1(e2.reb)}; o ideal é entrar com altura ${CP().prontoAlt} e rebrota ${CP().prontoReb} ou mais.`);
       if(e2.passado&&!temVacasCats(mov))avisos.push(`O ${nm(d.para)} está passado: indicado só para vacas.`)}
     if(avisos.length){av.className='note warn';av.innerHTML='<b>Confira antes de salvar:</b><br>'+[...new Set(avisos)].map(esc).join('<br>');av.hidden=false;forcar=true;$('#mBtn').textContent='Salvar mesmo assim'}
     else if(mudDest.some(d=>d.para)){av.className='note ok';av.textContent='Tudo certo com as divisas e os pastos de destino.';av.hidden=false}else av.hidden=true};
@@ -1335,7 +1425,7 @@ function histCapim(H,p,PER){
   const pts=[];for(let i=0;i<T;i+=k)pts.push(addD(res.ini,i));if(pts[pts.length-1]!==fim)pts.push(fim);
   const E=pts.map(d=>({d,e:estado(p,PER,d)}));
   const pl=f=>E.map(q=>`${x(q.d).toFixed(1)},${Y(f(q.e)).toFixed(1)}`).join(' ');
-  let h=`<rect x="0" y="${Y(5)}" width="${W}" height="${Y(4.5)-Y(5)}" fill="var(--ok)" opacity=".18"/><rect x="0" y="${Y(1)}" width="${W}" height="${Y(0)-Y(1)}" fill="var(--bad)" opacity=".14"/>`;
+  const cp=CP();let h=`<rect x="0" y="${Y(5)}" width="${W}" height="${Y(cp.prontoAlt)-Y(5)}" fill="var(--ok)" opacity=".18"/><rect x="0" y="${Y(cp.sairAlt)}" width="${W}" height="${Y(0)-Y(cp.sairAlt)}" fill="var(--bad)" opacity=".14"/>`;
   h+=[0,1,2,3,4,5].map(v=>`<line x1="0" x2="${W}" y1="${Y(v)}" y2="${Y(v)}" stroke="var(--line)" stroke-width=".5"/><text x="-4" y="${Y(v)+3}" font-size="9" text-anchor="end" fill="var(--muted)">${v}</text>`).join('');
   h+=`<polyline points="${pl(e=>e.alt)}" fill="none" stroke="var(--info)" stroke-width="2"/><polyline points="${pl(e=>e.reb)}" fill="none" stroke="var(--ok)" stroke-width="2" stroke-dasharray="5 4"/>`;
   for(const l of L){h+=`<circle cx="${x(l.data).toFixed(1)}" cy="${Y(l.altura)}" r="3.5" fill="var(--info)"><title>Leitura ${br(l.data)}: altura ${l.altura}</title></circle><circle cx="${x(l.data).toFixed(1)}" cy="${Y(l.rebrota)}" r="3.5" fill="var(--surface)" stroke="var(--ok)" stroke-width="2"><title>Leitura ${br(l.data)}: rebrota ${l.rebrota}</title></circle>`}
@@ -1381,16 +1471,16 @@ function renderHistorico(){
       <dt>Tipo de capim</dt><dd>${esc(P[p].capim||'')}</dd>
       <dt>Vizinhos</dt><dd>${P[p].viz.map(nm).join(', ')||'nenhum'}</dd>
       <dt>Agora</dt><dd>${e.occ.length?e.occ.map(x=>esc((x.nome?x.nome+': ':'')+descSeg(x))+` (desde ${br(x.entrada)})`).join(' + ')+` · ${f2(e.u)} UA/ha`:'vazio'}</dd>
-      <dt>Capim estimado</dt><dd>altura ${f1(e.alt)}, rebrota ${f1(e.reb)} (média ${f1(e.lv)})${e.passado?' · passado: só vacas':''}${e.passaEm!==null?` · passa do ponto em ${e.passaEm} dia(s)`:''}${e.suposto?' (sem leitura, suposto 5 em '+br(DATA.base)+')':''}</dd>
+      <dt>Capim estimado</dt><dd>altura ${f1(e.alt)}, rebrota ${f1(e.reb)}${e.passado?' · passado: só vacas':''}${e.passaEm!==null?` · passa do ponto em ${e.passaEm} dia(s)`:''}${e.suposto?' (sem leitura, suposto 5 em '+br(DATA.base)+')':''}</dd>
       <dt>Ritmo do pasto</dt><dd>${e.r.proprio?`${Math.round(e.r.gBase/EP(e.ep).g*100)}% do padrão · cresce o equivalente a ${f2(e.r.g*12)} UA/ha por dia (${e.r.n} intervalo(s) nos últimos 60 dias)`:`padrão ${EP(e.ep).nome.toLowerCase()} (${f1(EP(e.ep).g*12)} UA/ha por dia): ainda faltam leituras desta época`}</dd>
       <dt>Lotação que se mantém</dt><dd>até ${f2(e.r.g*12)} UA/ha ≈ ${nb(e.r.g*12*P[p].area,0)} UA neste pasto</dd>
-      ${e.occ.length?`<dt>Previsão</dt><dd>${fmtDias(e.diasAte1)}${e.diasAte1!==Infinity&&e.diasAte1!==null?' até o capim chegar a 1':''}</dd>`:`<dt>Previsão</dt><dd>${e.lv>=4.5?'pronto para receber':'pronto em '+fmtDias(e.diasAte5)}</dd>`}
+      ${e.occ.length?`<dt>Previsão</dt><dd>${fmtDias(e.diasAte1)}${e.diasAte1!==Infinity&&e.diasAte1!==null?` até a altura chegar a ${CP().sairAlt}`:''}</dd>`:`<dt>Previsão</dt><dd>${e.pronto?'pronto para receber':'pronto em '+fmtDias(e.diasAte5)}</dd>`}
     </dl>
    </div>
    ${HS.html}
    <h3>Consumo entre leituras</h3>
-   <p class="muted" style="font-size:13px;margin-top:0">Cada linha compara duas leituras seguidas. Variação/dia = quanto o capim subiu (+) ou desceu (−) por dia. Crescimento = variação/dia somada ao que o gado comeu (UA/ha × 1/12); com o pasto vazio, é comparado aos 25 dias de descanso padrão. É ele que define o ritmo do pasto. Entram no ritmo só os intervalos dos últimos 60 dias.</p>
-   ${I.length?`<div class="tbl card" style="padding:4px"><table><tr><th>De</th><th>Até</th><th>Dias</th><th>UA/ha</th><th>Capim</th><th>Variação/dia</th><th>Crescimento (UA/ha)</th><th>No ritmo?</th></tr>${[...I].reverse().map(x=>`<tr><td>${br(x.de)}</td><td>${br(x.ate)}</td><td>${x.dt}</td><td>${f2(x.ua)}</td><td>${f1(x.la)} → ${f1(x.lb)}</td><td>${x.taxa>=0?'+':''}${nb(x.taxa,3)}</td><td>${f2(x.g*12)}</td><td>${x.valido&&x.ate>lim?'sim':'não'}</td></tr>`).join('')}</table></div>`:'<p class="muted">São precisas pelo menos duas leituras deste pasto.</p>'}
+   <p class="muted" style="font-size:13px;margin-top:0">Cada linha compara duas leituras seguidas. Variação/dia = quanto a altura (quantidade de capim) subiu (+) ou desceu (−) por dia. Crescimento = variação/dia somada ao que o gado comeu (UA/ha × 1/12); com o pasto vazio, é comparado aos 25 dias de descanso padrão. É ele que define o ritmo do pasto. Entram no ritmo só os intervalos dos últimos 60 dias.</p>
+   ${I.length?`<div class="tbl card" style="padding:4px"><table><tr><th>De</th><th>Até</th><th>Dias</th><th>UA/ha</th><th>Alt/Reb</th><th>Variação/dia (altura)</th><th>Crescimento (UA/ha)</th><th>No ritmo?</th></tr>${[...I].reverse().map(x=>`<tr><td>${br(x.de)}</td><td>${br(x.ate)}</td><td>${x.dt}</td><td>${f2(x.ua)}</td><td>${x.la}/${x.ra} → ${x.lb}/${x.rb}</td><td>${x.taxa>=0?'+':''}${nb(x.taxa,3)}</td><td>${f2(x.g*12)}</td><td>${x.valido&&x.ate>lim?'sim':'não'}</td></tr>`).join('')}</table></div>`:'<p class="muted">São precisas pelo menos duas leituras deste pasto.</p>'}
    <h3>Leituras</h3>
    ${L.length?`<div class="tbl card" style="padding:4px"><table><tr><th>Data</th><th>Alt.</th><th>Reb.</th><th>Ponto</th><th>Água</th><th>Situação</th><th>Obs.</th></tr>${L.map(l=>`<tr><td>${br(l.data)}</td><td>${l.altura}</td><td>${l.rebrota}</td><td style="white-space:normal">${txtMarcas(l)}</td><td>${l.agua||''}</td><td>${l.situacao||''}</td><td style="white-space:normal;min-width:140px">${esc(l.obs)}</td></tr>`).join('')}</table></div>`:'<p class="muted">Nenhuma leitura deste pasto.</p>'}
    <h3>Ocorrências</h3>
@@ -1434,7 +1524,7 @@ function importar(o){
       const ah=o.config&&(o.config.adminTs||0)>(S.config.adminTs||0)?o.config:S.config;
       if(o.config&&(o.config.alterado||0)>(S.config.alterado||0))S.config=o.config;
       if(ah.adminTs){S.config.adminHash=ah.adminHash;S.config.adminTs=ah.adminTs}
-  montarPastos();save();return{nl,nm,nc,no,nu}}
+  aplicarBase();podar(false);montarPastos();save();return{nl,nm,nc,no,nu}}
 const copiaAuto=async motivo=>{baixar(`pastos_copia_antes_de_${motivo}_${hoje()}.json`,await pacoteF(),'application/json',true)};
 
 // ---------- sincronização com a Planilha Google (Apps Script) ----------
@@ -1506,6 +1596,7 @@ async function sincronizar(manual,soFotos){
       const M=r.M||{};for(const k of LISTAS_SINC)for(const x of (M[k]||[]))marcaSv(x);for(const x of Object.values(M.cad||{}))marcaSv(x);if(M.config)marcaSv(M.config);
       importar(M);S.fotosLink={...(S.fotosLink||{}),...(M.fotosLink||{})};
       if(r.srv){S.sincSrv=r.srv;S.sincCur=r.cur}
+      if(r.ultSinc)S.ultSinc=r.ultSinc;if(r.recusados)S.recusados=r.recusados;
       break}
     save();
     // 2. abas da planilha (só celular com a chave do administrador)
@@ -1572,7 +1663,7 @@ function desenharSinc(){const b=$('#sincBox');if(!b)return;const c=sincCfg(),e=S
 function renderDados(){
   const c=estadoCopia(),pend=S.log.filter(l=>l.dev===DEV&&TIPOS_LANC.includes(l.tipo)&&l.ts>(c.ult||0)).sort((a,b)=>b.ts-a.ts);
   $('#tab-dados').innerHTML=`<h2>Dados e sincronização</h2><p class="muted" style="margin-top:0">App versão ${VERSAO}</p>
-   ${c.trava?'<div class="note bad" style="margin-bottom:12px">⛔ Lançamentos sem cópia há mais de 2 dias. Novos lançamentos estão travados até enviar os dados.</div>':c.aviso?'<div class="note warn" style="margin-bottom:12px">⚠ Há lançamentos sem cópia há mais de 1 dia. Envie hoje.</div>':''}
+   ${c.vermelho?'<div class="note bad" style="margin-bottom:12px">⛔ Lançamentos sem cópia há mais de 3 dias. Envie os dados agora.</div>':c.aviso?'<div class="note warn" style="margin-bottom:12px">⚠ Há lançamentos sem cópia há mais de 1 dia. Envie hoje.</div>':''}
   <div class="card stack">
    <dl class="kv">
      <dt>Última cópia</dt><dd>${c.ult?fmtDT(c.ult)+' ('+esc(S.copia.como)+')':'nunca'}</dd>
@@ -1607,7 +1698,9 @@ function renderDados(){
   <div class="card"><ul style="margin:0;padding-left:20px;font-size:14px">
    <li>1 UA = 450 kg. UA do lote cresce pelo ganho de peso diário da planilha.</li>
    <li>Padrão: o capim cresce o equivalente a 1,4 UA/ha por dia; com 3 UA/ha vai de 5 a 1 em 30 dias. Cada pasto ganha seu próprio ritmo pela média das leituras dos últimos 60 dias.</li>
-   <li>Lote sai com capim 1; o pasto descansa ${DESCANSO} dias até voltar a 5.</li>
+   <li>Altura (quantidade) e rebrota (qualidade) são avaliadas separadas, sem média. Pronto para entrar: altura ${CP().prontoAlt} e rebrota ${CP().prontoReb} ou mais. Tirar o gado: altura ${CP().sairAlt} ou menos. Muito talo (altura ${CP().taloAlt}+ e rebrota ${CP().taloReb} ou menos): só vacas. Rebrotando (altura ${CP().rebAlt} ou menos e rebrota ${CP().rebReb}+): continua descansando.</li>
+   <li>Leitura: pasto com gado a cada ${LP().com} dias; vazio, até ${LP().vaz} dias depois da saída do gado.</li>
+   <li>Sugestão de pasto: lotação mais perto da ideal da época (${EPOCAS.map(([k])=>EP(k).nome.toLowerCase()+' '+nb(EP(k).ideal,1)).join(', ')} UA/ha); com vacas, o pasto passado vem primeiro; depois vizinho, mesmo bloco e os demais.</li>
    <li>Lote com menos de 1 UA/ha fica no máximo 60 dias; o pasto então recebe lote acima de 3 UA/ha para corte rápido.</li>
    <li>Macho (boi, garrote, touro) não faz divisa com fêmea (vaca, novilha). Desmama e tropa podem ao lado de qualquer lote.</li>
    <li>Os vizinhos podem ser corrigidos em Mais › Administrador › Pastos.</li>
@@ -1955,7 +2048,7 @@ function entrar(id){const u=usuario(id);SES={id,nome:u.nome};try{sessionStorage.
 function sair(){SES=null;try{sessionStorage.removeItem(KEY+'.ses')}catch(e){}mostrarLogin()}
 function mostrarLogin(){['#topo','#app','#nav'].forEach(x=>$(x).hidden=true);$('#login').hidden=false;renderLogin()}
 function mostrarApp(){$('#login').hidden=true;['#topo','#app','#nav'].forEach(x=>$(x).hidden=false);atualizaTopo();sincAuto(1500);
-  let t0='painel';try{t0=localStorage.getItem(KEY+'.tab')||'painel'}catch(e){}go(R[t0]&&t0!=='admin'?t0:'painel')}
+  let t0='painel';try{t0=localStorage.getItem(KEY+'.tab')||'painel'}catch(e){}go(R[t0]&&t0!=='admin'?t0:'painel');fechAuto()}
 let loginAdm=false;
 function renderLogin(){
   const U=S.usuarios.filter(u=>u.ativo!==false).sort((a,b)=>a.nome.localeCompare(b.nome,'pt-BR'));
@@ -1980,7 +2073,11 @@ function renderLogin(){
 // ---------- topo ----------
 function atualizaTopo(){if(!SES)return;
   $('#hdrWho').textContent=`👤 ${SES.nome}${SES.id!=='admin'&&usuario(SES.id)&&usuario(SES.id).tipo&&usuario(SES.id).tipo!=='func'?' ('+tipoNome(usuario(SES.id).tipo).toLowerCase()+')':''} · ${dm(hoje())} · ${EP(epocaEm(hoje())).nome}`;
-  const c=estadoCopia(),d=$('#sincDot');d.hidden=!c.n;d.textContent=c.n;d.className='dot'+(c.trava||c.aviso?' bad':'')}
+  const c=estadoCopia(),d=$('#sincDot');d.hidden=!c.n;d.textContent=c.n;d.className='dot'+(c.vermelho||c.aviso?' bad':'');
+  const g=$('#avisoGlobal'),t=[];
+  if(!storageOk)t.push('⛔ O celular não está conseguindo guardar os dados. Exporte um arquivo em Mais › Dados antes de fechar o app.');
+  if(c.vermelho)t.push(`⛔ ${c.n} lançamento(s) sem cópia há ${Math.floor(c.horas/24)} dias. Envie os dados pelo botão Sinc. no topo.`);
+  g.innerHTML=t.map(esc).join('<br>');g.hidden=!t.length}
 function textoResumo(dia){
   const L=S.log.filter(l=>diaLocal(l.ts)===dia&&['mudanca','gado','ocorrencia','resolucao','leitura'].includes(l.tipo)).sort((a,b)=>a.ts-b.ts);
   const sec=(t,tit)=>{const x=L.filter(l=>l.tipo===t);return x.length?`\n*${tit} (${x.length})*\n`+x.map(l=>`• ${horaLocal(l.ts)} ${l.texto.replace(/^(Mudança|Ocorrência resolvida|Ocorrência|Leitura) /,'')}${l.data&&l.data!==dia?` [data do fato ${br(l.data)}]`:''} — ${l.nome}`).join('\n')+'\n':''};
@@ -2032,7 +2129,7 @@ function renderMeus(){
 function renderSinc(){const c=estadoCopia();
   const pend=S.log.filter(l=>l.dev===DEV&&TIPOS_LANC.includes(l.tipo)&&l.ts>(c.ult||0)).sort((a,b)=>b.ts-a.ts);
   $('#tab-sinc').innerHTML=`<h2>Sincronização</h2>
-   ${c.trava?'<div class="note bad" style="margin-bottom:12px">⛔ Lançamentos sem cópia há mais de 2 dias. Novos lançamentos estão travados até enviar os dados.</div>':c.aviso?'<div class="note warn" style="margin-bottom:12px">⚠ Há lançamentos sem cópia há mais de 1 dia. Envie hoje.</div>':''}
+   ${c.vermelho?'<div class="note bad" style="margin-bottom:12px">⛔ Lançamentos sem cópia há mais de 3 dias. Envie os dados agora.</div>':c.aviso?'<div class="note warn" style="margin-bottom:12px">⚠ Há lançamentos sem cópia há mais de 1 dia. Envie hoje.</div>':''}
    <div class="card stack"><dl class="kv">
      <dt>Última cópia</dt><dd>${c.ult?fmtDT(c.ult)+' ('+esc(S.copia.como)+')':'nunca'}</dd>
      <dt>Sem cópia</dt><dd>${c.n} lançamento(s)${c.velho?' · o mais antigo de '+fmtDT(c.velho):''}</dd>
@@ -2153,9 +2250,13 @@ function renderAdmin(){if(exigeAdm('admin'))return;
     <div class="row"><div><label for="ePocaS">Mudar para</label><select id="ePocaS">${EPOCAS.map(([k,n],i)=>`<option value="${k}" ${EPOCAS[(EPOCAS.findIndex(x=>x[0]===epocaEm(hoje()))+1)%4][0]===k?'selected':''}>${n}</option>`).join('')}</select></div><div><label for="ePocaD">A partir de</label><input id="ePocaD" type="date" value="${hoje()}"></div></div>
     ${epocas().length?`<div class="muted" style="font-size:12.5px">Trocas: ${epocas().map(x=>`${EP(x.epoca).nome} a partir de ${br(x.data)}`).join(' · ')}</div>`:''}
     <button class="btn sec" type="submit">Salvar troca</button></form>
+   <form id="fCal" class="card stack" style="margin-top:8px"><b style="font-size:14px">Calendário das épocas</b>
+    <div class="row" style="flex-wrap:wrap">${MESES.map((m,i)=>`<div style="flex:1 1 140px"><label for="cal_${i}" style="font-weight:400">${m}</label><select id="cal_${i}">${EPOCAS.map(([k,n])=>`<option value="${k}" ${calEpoca()[i]===k?'selected':''}>${n}</option>`).join('')}</select></div>`).join('')}</div>
+    <p class="muted" style="font-size:12.5px;margin:0">Quando o mês muda de época, o Painel do administrador pergunta se confirma a troca. O app não troca sozinho.</p>
+    <button class="btn sec" type="submit">Salvar calendário</button></form>
    <form id="fEpPar" class="card stack" style="margin-top:8px"><b style="font-size:14px">Capim e descanso de cada época</b>
-    ${EPOCAS.map(([k])=>{const x=EP(k);return`<div class="row"><div style="flex:1.4;align-self:center"><b style="font-size:13.5px">${x.nome}</b></div><div><label for="epU_${k}" style="font-weight:400">Mantém (UA/ha)</label><input id="epU_${k}" type="number" min="0.2" max="5" step="0.1" inputmode="decimal" value="${x.ua}"></div><div><label for="epD_${k}" style="font-weight:400">Descanso (dias)</label><input id="epD_${k}" type="number" min="5" max="180" inputmode="numeric" value="${x.desc}"></div></div>`}).join('')}
-    <p class="muted" style="font-size:12.5px;margin:0">Mantém = lotação em que o capim cresce o mesmo que o gado come. Descanso = dias para o pasto vazio ir da nota 1 à 5. São o padrão; o ritmo de cada pasto é calculado pelas leituras, separado por época. A adubação só vale nas águas.</p>
+    ${EPOCAS.map(([k])=>{const x=EP(k);return`<div class="row"><div style="flex:1.4;align-self:center"><b style="font-size:13.5px">${x.nome}</b></div><div><label for="epU_${k}" style="font-weight:400">Mantém (UA/ha)</label><input id="epU_${k}" type="number" min="0.2" max="5" step="0.1" inputmode="decimal" value="${x.ua}"></div><div><label for="epD_${k}" style="font-weight:400">Descanso (dias)</label><input id="epD_${k}" type="number" min="5" max="180" inputmode="numeric" value="${x.desc}"></div><div><label for="epI_${k}" style="font-weight:400">Ideal ao entrar (UA/ha)</label><input id="epI_${k}" type="number" min="0.2" max="15" step="0.1" inputmode="decimal" value="${x.ideal}"></div></div>`}).join('')}
+    <p class="muted" style="font-size:12.5px;margin:0">Mantém = lotação em que o capim cresce o mesmo que o gado come. Descanso = dias para o pasto vazio ir da nota 1 à 5. São o padrão; o ritmo de cada pasto é calculado pelas leituras, separado por época. A adubação só vale nas águas. Ideal ao entrar = lotação que a sugestão de pasto procura.</p>
     <button class="btn sec" type="submit">Salvar valores</button></form>
    <h3>Suplementação</h3>
    <form id="fSupCfg" class="card stack"><div class="row"><div><label for="scTr">Capacidade do trator (sacos)</label><input id="scTr" type="number" min="1" inputmode="numeric" value="${supCfg().trator}"></div>
@@ -2170,6 +2271,26 @@ function renderAdmin(){if(exigeAdm('admin'))return;
    ${rendTab().m.map(([a,r],i)=>`<div class="row"><div><label for="rA${i}">${i?'Acima da faixa anterior até':'Até'} (kg)</label><input id="rA${i}" type="number" min="100" max="1500" inputmode="numeric" value="${a}"></div><div><label for="rM${i}">Rendimento (%)</label><input id="rM${i}" type="number" min="40" max="65" step="0.1" inputmode="decimal" value="${r}"></div></div>`).join('')}
    <div class="row"><div><label for="rAc">Acima da última faixa (%)</label><input id="rAc" type="number" min="40" max="65" step="0.1" inputmode="decimal" value="${rendTab().acima}"></div></div>
    <p class="muted" style="font-size:12.5px;margin:0">O app sugere o rendimento na venda pelo peso informado; o funcionário pode corrigir. Valor = peso × rendimento ÷ 15 kg × valor da @. Só o administrador vê o valor.</p><button class="btn sec" type="submit">Salvar</button></form>
+   <h3>Regras do capim (altura e rebrota)</h3>
+   <form id="fCapim" class="card stack">
+    ${[['Pronto para entrar',[['prontoAlt','Altura mínima'],['prontoReb','Rebrota mínima']]],['Tirar o gado',[['sairAlt','Altura máxima']]],['Muito talo (só vacas)',[['taloAlt','Altura mínima'],['taloReb','Rebrota máxima']]],['Rebrotando (continua descansando)',[['rebAlt','Altura máxima'],['rebReb','Rebrota mínima']]]].map(([t,F])=>`<b style="font-size:13.5px">${t}</b><div class="row">${F.map(([k,n])=>`<div><label for="cp_${k}" style="font-weight:400">${n}</label><input id="cp_${k}" type="number" min="0" max="5" step="0.5" inputmode="decimal" value="${CP()[k]}"></div>`).join('')}</div>`).join('')}
+    <p class="muted" style="font-size:12.5px;margin:0">Notas de 0 a 5. Altura = quantidade de capim; rebrota = folha nova. Padrão: pronto 4/4, sair com altura 1, talo 4+/2−, rebrotando 2−/3+.</p>
+    <button class="btn sec" type="submit">Salvar regras</button></form>
+   <h3>Prazos de leitura</h3>
+   <form id="fLeitP" class="card stack">
+    <div class="row"><div><label for="lp_com" style="font-weight:400">Com gado: atrasada depois de (dias)</label><input id="lp_com" type="number" min="1" max="60" inputmode="numeric" value="${LP().com}"></div><div><label for="lp_comPouco" style="font-weight:400">Com gado: pouco confiável a partir de (dias)</label><input id="lp_comPouco" type="number" min="1" max="60" inputmode="numeric" value="${LP().comPouco}"></div></div>
+    <div class="row"><div><label for="lp_vaz" style="font-weight:400">Vazio: atrasada depois de (dias da saída)</label><input id="lp_vaz" type="number" min="1" max="120" inputmode="numeric" value="${LP().vaz}"></div><div><label for="lp_vazPouco" style="font-weight:400">Vazio: pouco confiável a partir de (dias)</label><input id="lp_vazPouco" type="number" min="1" max="120" inputmode="numeric" value="${LP().vazPouco}"></div></div>
+    <p class="muted" style="font-size:12.5px;margin:0">Padrão: com gado 3 e 4 dias; vazio 20 e 15 dias.</p>
+    <button class="btn sec" type="submit">Salvar prazos</button></form>
+   <h3>Fechamento (manutenção)</h3>
+   <form id="fFech" class="card stack">
+    <div>Ponto de partida atual: <b>${br(DATA.base)}</b> ${fechAtual()?`(fechamento ${fechAtual().auto?'automático ':''}feito por ${esc(fechAtual().por)} em ${fmtDT(fechAtual().ts)})`:'(planilha de lotação)'}</div>
+    <div><label for="fhDias">Guardar os últimos (dias)</label><input id="fhDias" type="number" min="1" max="365" inputmode="numeric" value="365"></div>
+    <div id="fhInfo" class="muted" style="font-size:13px"></div>
+    <p class="muted" style="font-size:12.5px;margin:0">O gado de cada pasto na data do fechamento vira o novo ponto de partida; os lançamentos anteriores saem dos celulares (continuam na planilha e na cópia). Antes de fechar, o app guarda uma cópia neste celular e baixa um arquivo. Automático: quando o ponto de partida passa de 395 dias, fecha guardando os últimos 365.</p>
+    <button class="btn danger" type="submit">Fechar agora</button>
+    ${fechAtual()?'<button type="button" class="btn sec" id="fhDesf">Desfazer último fechamento</button>':''}
+    <div id="fhMsg" hidden></div></form>
    <h3>Capim passado</h3>
    <form id="fDiasG" class="card stack"><div><label for="gDias">Dias que o capim fica passado depois de atingir a nota 5 em altura (geral)</label><input id="gDias" type="number" min="1" max="120" inputmode="numeric" value="${diasGeral()}"></div>
    <p class="muted" style="font-size:12.5px;margin:0">Vale para os pastos sem número próprio. ${PASTOS.filter(p=>p.diasPassado).length} pasto(s) com número próprio (Administrador › Pastos). Sugestão nas águas: ${DIAS_PONTO} dias.</p><button class="btn sec" type="submit">Salvar</button></form>`;
@@ -2214,8 +2335,23 @@ function renderAdmin(){if(exigeAdm('admin'))return;
   $('#fNasc').onsubmit=e=>{e.preventDefault();const w=parseFloat($('#nPeso').value),g=parseFloat($('#nGmd').value),wp=parseFloat($('#nPesoP').value),gp=parseFloat($('#nGmdP').value);
     if(!(w>=10&&w<=60)||!(g>=0&&g<=2)||!(wp>=10&&wp<=80)||!(gp>=0&&gp<=2)){toast('Confira os pesos e os GMD (0 a 2)');return}
     S.config={...S.config,pesoNasc:w,gmdNasc:g,pesoNascPotro:wp,gmdNascPotro:gp,alterado:Date.now()};registrar('config',null,`Nascimento: bezerro ${w} kg, GMD ${g}; potro ${wp} kg, GMD ${gp}`);msg('Salvo')};
-  $('#fEpPar').onsubmit=e=>{e.preventDefault();const par={};for(const [k] of EPOCAS){const u=parseFloat($('#epU_'+k).value),d=parseInt($('#epD_'+k).value);if(!(u>=0.2&&u<=5)||!(d>=5&&d<=180)){toast('UA/ha de 0,2 a 5 e descanso de 5 a 180 dias');return}par[k]={ua:u,desc:d}}
-    S.config={...S.config,epocaPar:par,alterado:Date.now()};_perCache=null;registrar('config',null,'Épocas: '+EPOCAS.map(([k,n])=>`${n} ${par[k].ua} UA/ha, ${par[k].desc} d`).join('; '));msg('Salvo')};
+  $('#fEpPar').onsubmit=e=>{e.preventDefault();const par={};for(const [k] of EPOCAS){const u=parseFloat($('#epU_'+k).value),d=parseInt($('#epD_'+k).value),i=parseFloat($('#epI_'+k).value);if(!(u>=0.2&&u<=5)||!(d>=5&&d<=180)||!(i>=0.2&&i<=15)){toast('Mantém de 0,2 a 5 UA/ha, descanso de 5 a 180 dias, ideal de 0,2 a 15 UA/ha');return}par[k]={ua:u,desc:d,ideal:i}}
+    S.config={...S.config,epocaPar:par,alterado:Date.now()};_perCache=null;registrar('config',null,'Épocas: '+EPOCAS.map(([k,n])=>`${n} ${nb(par[k].ua)} UA/ha, ${par[k].desc} d, ideal ${nb(par[k].ideal)} UA/ha`).join('; '));msg('Salvo')};
+  $('#fCal').onsubmit=e=>{e.preventDefault();const c=MESES.map((_,i)=>$('#cal_'+i).value);
+    S.config={...S.config,calEpocas:c,alterado:Date.now()};registrar('config',null,'Calendário das épocas: '+EPOCAS.map(([k,n])=>`${n}: ${MESES.filter((_,i)=>c[i]===k).map(m=>m.slice(0,3).toLowerCase()).join(', ')||'nenhum mês'}`).join('; '));msg('Calendário salvo')};
+  {const inf=()=>{const n=parseInt($('#fhDias').value),C=addD(hoje(),-(n||0));$('#fhInfo').textContent=!(n>=1&&n<=365)?'Informe de 1 a 365 dias.':C<=DATA.base?`Nada para fechar: o ponto de partida já é ${br(DATA.base)}.`:`Fecha até ${br(C)}: saem ${contaFech(C)} lançamento(s) deste celular.`};
+   $('#fhDias').oninput=inf;inf();
+   const fm=(t,ok)=>{const m=$('#fhMsg');m.className='note '+(ok?'ok':'bad');m.textContent=t;m.hidden=false};
+   $('#fFech').onsubmit=async e=>{e.preventDefault();const n=parseInt($('#fhDias').value),C=addD(hoje(),-(n||0));
+     if(!(n>=1&&n<=365))return fm('Informe de 1 a 365 dias.');if(C<=DATA.base)return fm(`Nada para fechar: o ponto de partida já é ${br(DATA.base)}.`);
+     if(!confirm(`Fechar até ${br(C)}? O app guarda uma cópia antes.`))return;
+     try{const q=await fecharAte(C,false);toast(`Fechado até ${br(C)}: ${q} lançamento(s) saíram`);renderAdmin()}catch(er){fm('Não fechou: '+(er&&er.message||er))}};
+   const dz=$('#fhDesf');if(dz)dz.onclick=async()=>{if(!confirm('Desfazer o último fechamento? Os lançamentos antigos voltam para este celular e para a planilha.'))return;
+     const r=await desfazerFech();if(r)fm(r);else{toast('Fechamento desfeito');renderAdmin()}}}
+  $('#fCapim').onsubmit=e=>{e.preventDefault();const c={};for(const k of Object.keys(CAPIM_PAD)){const v=parseFloat($('#cp_'+k).value);if(!(v>=0&&v<=5)){toast('Notas de 0 a 5');return}c[k]=v}
+    S.config={...S.config,capim:c,alterado:Date.now()};_perCache=null;registrar('config',null,`Regras do capim: pronto ${nb(c.prontoAlt)}/${nb(c.prontoReb)}, sair com altura ${nb(c.sairAlt)}, talo ${nb(c.taloAlt)}+/${nb(c.taloReb)}−, rebrotando ${nb(c.rebAlt)}−/${nb(c.rebReb)}+`);msg('Regras salvas')};
+  $('#fLeitP').onsubmit=e=>{e.preventDefault();const c={};for(const k of Object.keys(LEIT_PAD)){const v=parseInt($('#lp_'+k).value);if(!(v>=1&&v<=120)){toast('Dias de 1 a 120');return}c[k]=v}
+    S.config={...S.config,leitPrazo:c,alterado:Date.now()};registrar('config',null,`Prazos de leitura: com gado ${c.com} d (pouco confiável ${c.comPouco} d), vazio ${c.vaz} d (pouco confiável ${c.vazPouco} d)`);msg('Prazos salvos')};
   $('#fEpoca').onsubmit=e=>{e.preventDefault();const ep=$('#ePocaS').value,d=$('#ePocaD').value;if(!ep||!d){toast('Escolha a época e a data');return}
     S.config={...S.config,epocas:[...(S.config.epocas||[]),{data:d,epoca:ep,criado:Date.now()}],alterado:Date.now()};_perCache=null;registrar('config',d,`Época: ${EP(ep).nome} a partir de ${br(d)}`);msg(`${EP(ep).nome} a partir de ${br(d)}`)};
   bindGroup('scVer');
@@ -2259,7 +2395,7 @@ function go(t,livre){if(!SES)return mostrarLogin();if(t==='sinc'){t='dados';livr
 document.querySelectorAll('nav.tabs button').forEach(b=>b.onclick=()=>go(b.dataset.tab));
 $('#btResumo').onclick=enviarResumo;$('#btSair').onclick=()=>{if(confirm('Sair e trocar de usuário?'))sair()};$('#btSinc').onclick=()=>{dadosSincAgora=!!sincCfg().url;go('dados',true)};$('#hdrWho').onclick=()=>go('meus');
 try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist()}catch(e){}
-if(SES&&(SES.id==='admin'||(usuario(SES.id)&&usuario(SES.id).ativo!==false)))mostrarApp();else{SES=null;mostrarLogin()}
+carregarIDB().then(()=>{if(SES&&(SES.id==='admin'||(usuario(SES.id)&&usuario(SES.id).ativo!==false)))mostrarApp();else{SES=null;mostrarLogin()}});
 setInterval(()=>{if(SES)atualizaTopo()},60000);
 </script>
 
